@@ -6,14 +6,13 @@ class AddEditFriend extends Component {
     state = {
         first_name: '',
         last_name: '',
-        email_address: '',
-        phone_number: '',
-        facebook_url: '',
-        preferred_contact_type: '',
-        contact_frequency: '',
-        last_contact_type: '',
-        last_contact_date: '',
-        user_id: 'this should be the id of the logged in user'
+        email: '',
+        sms: '',
+        url: '',
+        pref: '',
+        frequency: '',
+        last_type: '',
+        last_date: ''
     } //end state
 
     handleInputChangeFor = propertyName => event => {
@@ -35,18 +34,22 @@ class AddEditFriend extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
                     <input type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
-                    <input type="text" placeholder="email address" onChange={this.handleInputChangeFor('email_address')} />
-                    <input type="text" placeholder="phone number" onChange={this.handleInputChangeFor('phone_number')} />
-                    <input type="text" placeholder="facebook profile url" onChange={this.handleInputChangeFor('facebook_url')} />
-                    <select onChange={this.handleInputChangeFor('preferred_contact_type')}>
-                        <option>preferred contact method</option>
+                    <input type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
+                    <input type="text" placeholder="phone number" onChange={this.handleInputChangeFor('sms')} />
+                    <input type="text" placeholder="facebook profile url" onChange={this.handleInputChangeFor('facebook')} />
+                    <select onChange={this.handleInputChangeFor('pref')}>
+                        <option value="email">email</option>
+                        <option value="sms">sms</option>
+                        <option value="facebook">facebook</option>
                     </select>
-                    <select onChange={this.handleInputChangeFor('contact_frequency')}>
-                        <option>contact frequency</option>
+                    <select onChange={this.handleInputChangeFor('frequency')}>
+                        <option value="1">weekly</option>
                     </select>
-                    <input type="date" placeholder="last date of contact" onChange={this.handleInputChangeFor('last_contact_date')} />
-                    <select onChange={this.handleInputChangeFor('last_contact_type')}>
-                        <option>last contact method</option>
+                    <input type="date" placeholder="last date of contact" onChange={this.handleInputChangeFor('last_date')} />
+                    <select onChange={this.handleInputChangeFor('last_type')}>
+                        <option value="email">email</option>
+                        <option value="sms">sms</option>
+                        <option value="facebook">facebook</option>
                     </select>
                     <br />
                     <button type="submit">add to contacts</button>

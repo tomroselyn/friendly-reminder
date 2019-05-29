@@ -4,12 +4,13 @@ import axios from 'axios';
 function* addFriend(action) {
     try {
         yield console.log('addFriendSaga hit');
+        yield axios.post('/api/friend', action.payload);
     } catch(err) {
         console.log('addFriendSaga error:', err);
     }
 }
 
-function * addFriendSaga() {
+function* addFriendSaga() {
     yield takeLatest('ADD_FRIEND', addFriend);
 }
 
