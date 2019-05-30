@@ -12,7 +12,7 @@ function* addFriend(action) {
 
 function* deleteFriend(action) {
     try {
-        yield axios.delete(`/api/friend/${action.id}`);
+        yield axios.delete(`/api/friend/${action.payload}`);
         yield put({type: 'GET_FRIENDS'});
     } catch(err) {
         console.log('deleteFriend saga error:', err);
