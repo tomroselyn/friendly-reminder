@@ -7,6 +7,10 @@ class AllFriends extends Component {
         this.props.dispatch({type: 'DELETE_FRIEND', payload: idToDelete})
     }
 
+    handleEdit = (idToEdit) => {
+        console.log('EDIT!', idToEdit);
+    }
+
     render() {
 
         let eachFriendRow = this.props.redux.friend.map(friend => {
@@ -16,7 +20,10 @@ class AllFriends extends Component {
                 <td>{friend.last_date}</td>
                 <td>{friend.due_date}</td>
                 <td>{friend.frequency}</td>
-                <td><button onClick={()=> this.handleDelete(friend.id)}>delete</button></td>
+                <td>
+                    <button onClick={()=> this.handleEdit(friend.id)}>edit</button>
+                    <button onClick={()=> this.handleDelete(friend.id)}>delete</button>
+                </td>
             </tr>
         })
 
