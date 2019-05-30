@@ -27,6 +27,7 @@ class AddEditFriend extends Component {
     } //end handleSubmit
 
     render() {
+        console.log(this.state);
 
         return (
             <div>
@@ -35,21 +36,22 @@ class AddEditFriend extends Component {
                     <input type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
                     <input type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
                     <input type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
-                    <input type="text" placeholder="phone number" onChange={this.handleInputChangeFor('sms')} />
-                    <input type="text" placeholder="facebook profile url" onChange={this.handleInputChangeFor('facebook')} />
+                    <input type="text" placeholder="sms number" onChange={this.handleInputChangeFor('sms')} />
+                    <input type="text" placeholder="url" onChange={this.handleInputChangeFor('url')} />
                     <select onChange={this.handleInputChangeFor('pref')}>
                         <option value="email">email</option>
                         <option value="sms">sms</option>
-                        <option value="facebook">facebook</option>
+                        <option value="url">url</option>
                     </select>
                     <select onChange={this.handleInputChangeFor('frequency')}>
-                        <option value="1">weekly</option>
+                        <option value={1}>weekly</option>
+                        <option value={2}>bi-weekly</option>
                     </select>
                     <input type="date" placeholder="last date of contact" onChange={this.handleInputChangeFor('last_date')} />
                     <select onChange={this.handleInputChangeFor('last_type')}>
                         <option value="email">email</option>
                         <option value="sms">sms</option>
-                        <option value="facebook">facebook</option>
+                        <option value="url">url</option>
                     </select>
                     <br />
                     <button type="submit">add to contacts</button>
