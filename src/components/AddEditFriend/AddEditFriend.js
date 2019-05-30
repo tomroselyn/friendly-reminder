@@ -56,6 +56,7 @@ class AddEditFriend extends Component {
                     <br />
                     <button type="submit">add to contacts</button>
                 </form>
+                <button onClick={() => this.props.dispatch({type: 'GET_FRIENDS'})}>GET</button>
             </div>
         )
     }
