@@ -3,8 +3,20 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //GET friend
-// router.get('/', (req, res) => {
-// });
+router.get('/', (req, res) => {
+    const friendQuery = `SELECT "friend".id, "friend".first_name, "friend".last_name, "address".email, "address".sms, "address".url, "address".pref, "timing".frequency, "timing".last_type, "timing".last_date, "timing".due_date FROM "friend"
+    JOIN "address" ON "address".friend_id = "friend".id
+    JOIN "timing" ON "timing".friend_id = "friend".id
+    WHERE "user_id" = $1;`;
+    pool.query(friendQuery, [req.user.id])
+    .then(friendQueryResult => {
+        res.send(friendQueryResult.rows);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    }) //end friendQuery
+    
+}); //end GET friend
 
 //POST friend
 router.post('/', (req, res) => {
@@ -17,7 +29,6 @@ router.post('/', (req, res) => {
     .then(friendQueryResult => {
 
         //address query
-        console.log(`BLAH BLAH BLAH BLAH BLAH BLAH`, friendQueryResult);
         const addressQuery = `INSERT INTO "address" ("email", "sms", "url", "pref", "friend_id") VALUES ($1, $2, $3, $4, $5);`;
         pool.query(addressQuery, [friend.email, friend.sms, friend.url, friend.pref, friendQueryResult.rows[0].id])
         .then(addressQueryResult => {
