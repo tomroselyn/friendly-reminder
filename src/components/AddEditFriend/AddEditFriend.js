@@ -27,7 +27,6 @@ class AddEditFriend extends Component {
     } //end handleSubmit
 
     render() {
-        console.log(this.state);
 
         return (
             <div>
@@ -56,7 +55,6 @@ class AddEditFriend extends Component {
                     <br />
                     <button type="submit">add to contacts</button>
                 </form>
-                <button onClick={() => this.props.dispatch({type: 'GET_FRIENDS'})}>GET</button>
             </div>
         )
     }

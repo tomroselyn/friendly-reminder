@@ -19,6 +19,7 @@ class AllFriends extends Component {
                     </thead>
                 </table>
                 <button onClick={() => console.log('hello')}>back to dashboard</button>
+                <button onClick={() => this.props.dispatch({ type: 'GET_FRIENDS' })}>GET</button>
             </div>
         )
     }
