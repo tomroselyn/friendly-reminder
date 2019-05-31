@@ -39,7 +39,7 @@ class AddEditFriend extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if (this.props.redux.editFriend) {
+        if (this.props.redux.editFriend.id) {
             this.props.dispatch({type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editFriend.id});
         } else {
             this.props.dispatch({ type: 'ADD_FRIEND', payload: this.state });
@@ -49,6 +49,8 @@ class AddEditFriend extends Component {
     } //end handleSubmit
 
     render() {
+
+        console.log(this.state);
 
         let submitButton;
 
