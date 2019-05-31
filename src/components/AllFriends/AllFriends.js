@@ -22,16 +22,16 @@ class AllFriends extends Component {
         this.props.dispatch({type: 'EXTRA_DAY', payload: idToUpdate});
     }
 
-    handleEmail = (friendToEmail) => {
-        console.log('sending an email')
+    handleEmail = (friend) => {
+        window.open(`mailto:${friend.email}`);
     }
 
-    handleSMS = (friendToEmail) => {
+    handleSMS = (friend) => {
         console.log('sending an SMS')
     }
 
-    handleUrl = (friendToEmail) => {
-        console.log('going to URL')
+    handleUrl = (friend) => {
+        window.open(friend.url);
     }
 
     render() {
