@@ -19,6 +19,15 @@ function* deleteFriend(action) {
     }
 } //end deleteFriend
 
+function* extraDay(action) {
+    try {
+        yield axios.put(`/api/friend/extraday/${action.payload}`);
+        yield put({type: 'GET_FRIENDS'});
+    } catch(err) {
+        console.log('extraDay saga error:', err);
+    }
+} //end extraDay
+
 function* getFriends(action) {
     try {
         let friendList = yield axios.get('/api/friend');
@@ -48,6 +57,7 @@ function* friendSaga() {
     yield takeLatest('DELETE_FRIEND', deleteFriend);
     yield takeEvery('GET_FRIENDS', getFriends);
     yield takeLatest('UPDATE_FRIEND', updateFriend);
+    yield takeEvery('EXTRA_DAY', extraDay);
 }
 
 export default friendSaga;

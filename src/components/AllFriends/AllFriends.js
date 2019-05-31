@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 
 class AllFriends extends Component {
 
+    handleAddClick = (event) => {
+        this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
+        this.props.history.push('/add-edit-friend');
+    }
+
     handleDelete = (idToDelete) => {
         this.props.dispatch({type: 'DELETE_FRIEND', payload: idToDelete})
     }
@@ -12,8 +17,9 @@ class AllFriends extends Component {
         this.props.history.push('/add-edit-friend');
     }
 
-    handleExtraDay = (friendToUpdate) => {
-        console.log('adding extra day to due date')
+    handleExtraDay = (idToUpdate) => {
+        console.log('adding extra day to due date');
+        this.props.dispatch({type: 'EXTRA_DAY', payload: idToUpdate});
     }
 
     handleEmail = (friendToEmail) => {
@@ -38,7 +44,7 @@ class AllFriends extends Component {
                 <td>{friend.due_date}</td>
                 <td>{friend.frequency}</td>
                 <td>
-                    <button onClick={() => this.handleExtraDay(friend)}>+1</button>
+                    <button onClick={() => this.handleExtraDay(friend.id)}>+1</button>
                     <button onClick={() => this.handleEmail(friend)}>email</button>
                     <button onClick={() => this.handleSMS(friend)}>sms</button>
                     <button onClick={() => this.handleUrl(friend)}>url</button>
@@ -50,7 +56,7 @@ class AllFriends extends Component {
 
         return (
             <div>
-                <button onClick={()=> this.props.history.push('/add-edit-friend')}>add new friend</button>
+                <button onClick={this.handleAddClick}>add new friend</button>
                 <table>
                     <thead>
                         <tr>
@@ -66,7 +72,6 @@ class AllFriends extends Component {
                         {eachFriendRow}
                     </tbody>
                 </table>
-                <button onClick={() => this.props.history.push('/dashboard')}>back to dashboard</button>
             </div>
         )
     }

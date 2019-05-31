@@ -63,7 +63,7 @@ class AddEditFriend extends Component {
         return (
             <div>
                 <h3>add / edit friend</h3>
-                <form id="addEditForm" onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <input value={this.state.first_name} type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
                     <input value={this.state.last_name} type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
                     <input value={this.state.email} type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
@@ -94,9 +94,7 @@ class AddEditFriend extends Component {
 }
 
 const mapRedux = (redux) => {
-    return {
-        redux
-    }
+    return {redux}
 }
 
 export default connect(mapRedux)(AddEditFriend);

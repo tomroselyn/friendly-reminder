@@ -106,4 +106,17 @@ router.put('/:id', (req, res) => {
 
 }); //end PUT friend by id (update everything)
 
+//PUT extra day by id
+router.put('/extraday/:id', (req, res) => {
+    const extraDayQuery = `UPDATE "timing" SET "due_date" = "due_date" + integer '1' WHERE "friend_id" = $1;`;
+    pool.query(extraDayQuery, [req.params.id])
+    .then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    }); //end extraDay query
+    
+}); //end PUT extra day by id
+
 module.exports = router;
