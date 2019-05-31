@@ -23,7 +23,12 @@ function* getFriends(action) {
     try {
         let friendList = yield axios.get('/api/friend');
         //map data and reformat dates to yyyy-mm-dd
-        yield put({type: 'SET_FRIENDS', payload: friendList.data});
+        let formattedFriendList = friendList.data.map(friend => {
+            friend.last_date = friend.last_date.substr(0, 10);
+            friend.due_date = friend.due_date.substr(0,10);
+            return friend;
+        })
+        yield put({type: 'SET_FRIENDS', payload: formattedFriendList});
     } catch(err) {
         console.log('getFriends saga error:', err);
     }

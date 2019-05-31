@@ -50,7 +50,7 @@ class AddEditFriend extends Component {
 
     render() {
 
-        console.log(this.state);
+        // console.log(this.state);
 
         let submitButton;
 

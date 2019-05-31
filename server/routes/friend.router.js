@@ -34,7 +34,10 @@ router.get('/', (req, res) => {
 //POST friend
 router.post('/', (req, res) => {
     const friend = req.body
-    const dueDate = '2020/01/01';
+    const dueDate = new Date(friend.last_date);
+    dueDate.setDate(dueDate.getDate() + (friend.frequency * 7));
+    
+    // `${friend.last_date} + integer '${friend.frequency * 7}'`;
 
     //friend query
     const friendQuery = `INSERT INTO "friend" ("first_name", "last_name", "user_id") VALUES ($1, $2, $3) RETURNING "id";`;
