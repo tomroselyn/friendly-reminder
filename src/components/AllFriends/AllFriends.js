@@ -8,7 +8,6 @@ class AllFriends extends Component {
     }
 
     handleEdit = (idToEdit) => {
-        console.log('EDIT!', idToEdit);
         this.props.dispatch({type: 'SET_EDIT_ID', payload: idToEdit});
         this.props.history.push('/add-edit-friend');
     }

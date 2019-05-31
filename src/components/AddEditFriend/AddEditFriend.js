@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class AddEditFriend extends Component {
 
     state = {
-        first_name: '',
+        first_name: this.props.redux.editId | '',
         last_name: '',
         email: '',
         sms: '',
@@ -23,16 +23,38 @@ class AddEditFriend extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        this.props.dispatch({type: 'ADD_FRIEND', payload: this.state})
+        if (this.props.redux.editId) {
+            this.props.dispatch({type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editId});
+        } else {
+            this.props.dispatch({ type: 'ADD_FRIEND', payload: this.state });
+        }
+        this.props.dispatch({ type: 'CLEAR_EDIT_ID' });
+        this.props.history.push('/dashboard');
     } //end handleSubmit
 
     render() {
+
+        let editFriend;
+        for (let friend of this.props.redux.friend) {
+            if (friend.id === this.props.redux.editId) {
+                editFriend = friend;
+            }
+        }
+        console.log('edit friend:', editFriend);
+
+        let submitButton;
+
+        if (this.props.redux.editId) {
+            submitButton = <button type="submit">update friend</button>
+        } else {
+            submitButton = <button type="submit">add friend</button>
+        }
 
         return (
             <div>
                 <h3>add / edit friend</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
+                    <input value={this.state.first_name} type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
                     <input type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
                     <input type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
                     <input type="text" placeholder="sms number" onChange={this.handleInputChangeFor('sms')} />
@@ -53,11 +75,17 @@ class AddEditFriend extends Component {
                         <option value="url">url</option>
                     </select>
                     <br />
-                    <button type="submit">add to contacts</button>
+                    {submitButton}
                 </form>
             </div>
         )
     }
 }
 
-export default connect()(AddEditFriend);
+const mapRedux = (redux) => {
+    return {
+        redux
+    }
+}
+
+export default connect(mapRedux)(AddEditFriend);
