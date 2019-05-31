@@ -7,9 +7,25 @@ class AllFriends extends Component {
         this.props.dispatch({type: 'DELETE_FRIEND', payload: idToDelete})
     }
 
-    handleEdit = (idToEdit) => {
-        this.props.dispatch({type: 'SET_EDIT_ID', payload: idToEdit});
+    handleEdit = (friendToEdit) => {
+        this.props.dispatch({type: 'SET_EDIT_FRIEND', payload: friendToEdit});
         this.props.history.push('/add-edit-friend');
+    }
+
+    handleExtraDay = (friendToUpdate) => {
+        console.log('adding extra day to due date')
+    }
+
+    handleEmail = (friendToEmail) => {
+        console.log('sending an email')
+    }
+
+    handleSMS = (friendToEmail) => {
+        console.log('sending an SMS')
+    }
+
+    handleUrl = (friendToEmail) => {
+        console.log('going to URL')
     }
 
     render() {
@@ -22,7 +38,11 @@ class AllFriends extends Component {
                 <td>{friend.due_date}</td>
                 <td>{friend.frequency}</td>
                 <td>
-                    <button onClick={()=> this.handleEdit(friend.id)}>edit</button>
+                    <button onClick={() => this.handleExtraDay(friend)}>+1</button>
+                    <button onClick={() => this.handleEmail(friend)}>email</button>
+                    <button onClick={() => this.handleSMS(friend)}>sms</button>
+                    <button onClick={() => this.handleUrl(friend)}>url</button>
+                    <button onClick={()=> this.handleEdit(friend)}>edit</button>
                     <button onClick={()=> this.handleDelete(friend.id)}>delete</button>
                 </td>
             </tr>
@@ -30,7 +50,7 @@ class AllFriends extends Component {
 
         return (
             <div>
-                <button onClick={()=> console.log('hello')}>add new friend</button>
+                <button onClick={()=> this.props.history.push('/add-edit-friend')}>add new friend</button>
                 <table>
                     <thead>
                         <tr>
@@ -46,8 +66,7 @@ class AllFriends extends Component {
                         {eachFriendRow}
                     </tbody>
                 </table>
-                <button onClick={() => console.log('hello')}>back to dashboard</button>
-                <button onClick={() => this.props.dispatch({ type: 'GET_FRIENDS' })}>GET</button>
+                <button onClick={() => this.props.history.push('/dashboard')}>back to dashboard</button>
             </div>
         )
     }

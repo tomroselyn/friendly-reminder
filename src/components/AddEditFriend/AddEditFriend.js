@@ -4,16 +4,32 @@ import { connect } from 'react-redux';
 class AddEditFriend extends Component {
 
     state = {
-        first_name: this.props.redux.editId | '',
-        last_name: '',
-        email: '',
-        sms: '',
-        url: '',
-        pref: '',
-        frequency: '',
-        last_type: '',
-        last_date: ''
+        first_name: this.props.redux.editFriend.first_name || '',
+        last_name: this.props.redux.editFriend.last_name || '',
+        email: this.props.redux.editFriend.email || '',
+        sms: this.props.redux.editFriend.sms || '',
+        url: this.props.redux.editFriend.url || '',
+        pref: this.props.redux.editFriend.pref || '',
+        frequency: this.props.redux.editFriend.frequency || '',
+        last_type: this.props.redux.editFriend.last_type || '',
+        last_date: this.props.redux.editFriend.last_date.substr(0,10) || ''
     } //end state
+
+    handleClear = (event) => {
+        event.preventDefault();
+        this.props.dispatch({type: 'CLEAR_EDIT_FRIEND'});
+        this.setState({
+            first_name: '',
+            last_name: '',
+            email: '',
+            sms: '',
+            url: '',
+            pref: '',
+            frequency: '',
+            last_type: '',
+            last_date: ''
+        })
+    }
 
     handleInputChangeFor = propertyName => event => {
         this.setState({
@@ -23,28 +39,20 @@ class AddEditFriend extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        if (this.props.redux.editId) {
-            this.props.dispatch({type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editId});
+        if (this.props.redux.editFriend) {
+            this.props.dispatch({type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editFriend.id});
         } else {
             this.props.dispatch({ type: 'ADD_FRIEND', payload: this.state });
         }
-        this.props.dispatch({ type: 'CLEAR_EDIT_ID' });
-        this.props.history.push('/dashboard');
+        this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
+        this.props.history.push('/all-friends');
     } //end handleSubmit
 
     render() {
 
-        let editFriend;
-        for (let friend of this.props.redux.friend) {
-            if (friend.id === this.props.redux.editId) {
-                editFriend = friend;
-            }
-        }
-        console.log('edit friend:', editFriend);
-
         let submitButton;
 
-        if (this.props.redux.editId) {
+        if (this.props.redux.editFriend.id) {
             submitButton = <button type="submit">update friend</button>
         } else {
             submitButton = <button type="submit">add friend</button>
@@ -53,29 +61,30 @@ class AddEditFriend extends Component {
         return (
             <div>
                 <h3>add / edit friend</h3>
-                <form onSubmit={this.handleSubmit}>
+                <form id="addEditForm" onSubmit={this.handleSubmit}>
                     <input value={this.state.first_name} type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
-                    <input type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
-                    <input type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
-                    <input type="text" placeholder="sms number" onChange={this.handleInputChangeFor('sms')} />
-                    <input type="text" placeholder="url" onChange={this.handleInputChangeFor('url')} />
-                    <select onChange={this.handleInputChangeFor('pref')}>
+                    <input value={this.state.last_name} type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
+                    <input value={this.state.email} type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
+                    <input value={this.state.sms} type="text" placeholder="sms number" onChange={this.handleInputChangeFor('sms')} />
+                    <input value={this.state.url} type="text" placeholder="url" onChange={this.handleInputChangeFor('url')} />
+                    <select value={this.state.pref} onChange={this.handleInputChangeFor('pref')}>
                         <option value="email">email</option>
                         <option value="sms">sms</option>
                         <option value="url">url</option>
                     </select>
-                    <select onChange={this.handleInputChangeFor('frequency')}>
+                    <select value={this.state.frequency} onChange={this.handleInputChangeFor('frequency')}>
                         <option value={1}>weekly</option>
                         <option value={2}>bi-weekly</option>
                     </select>
-                    <input type="date" placeholder="last date of contact" onChange={this.handleInputChangeFor('last_date')} />
-                    <select onChange={this.handleInputChangeFor('last_type')}>
+                    <input value={this.state.last_date} type="date" placeholder="last date of contact" onChange={this.handleInputChangeFor('last_date')} />
+                    <select value={this.state.last_type} onChange={this.handleInputChangeFor('last_type')}>
                         <option value="email">email</option>
                         <option value="sms">sms</option>
                         <option value="url">url</option>
                     </select>
                     <br />
                     {submitButton}
+                    <button onClick={this.handleClear}>clear form</button>
                 </form>
             </div>
         )

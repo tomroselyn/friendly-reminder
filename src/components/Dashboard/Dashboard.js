@@ -15,7 +15,7 @@ class Dashboard extends Component {
                     <h3>due for contact</h3>
                     <DashboardCarousel />
                 </div>
-                <button onClick={()=> console.log('hello')}>view all friends</button>
+                <button onClick={() => this.props.history.push('/all-friends')}>view all friends</button>
             </div>
         )
     }
