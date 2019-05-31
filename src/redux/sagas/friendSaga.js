@@ -22,6 +22,7 @@ function* deleteFriend(action) {
 function* getFriends(action) {
     try {
         let friendList = yield axios.get('/api/friend');
+        //map data and reformat dates to yyyy-mm-dd
         yield put({type: 'SET_FRIENDS', payload: friendList.data});
     } catch(err) {
         console.log('getFriends saga error:', err);

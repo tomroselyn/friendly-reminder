@@ -12,7 +12,7 @@ class AddEditFriend extends Component {
         pref: this.props.redux.editFriend.pref || '',
         frequency: this.props.redux.editFriend.frequency || '',
         last_type: this.props.redux.editFriend.last_type || '',
-        last_date: this.props.redux.editFriend.last_date.substr(0,10) || ''
+        last_date: this.props.redux.editFriend.last_date || ''
     } //end state
 
     handleClear = (event) => {
