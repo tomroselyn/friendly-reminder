@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {TextField, MenuItem, InputAdornment, Button} from '@material-ui/core';
+import {TextField, MenuItem, InputAdornment, Button, Grid} from '@material-ui/core';
 
 class AddEditFriend extends Component {
 
@@ -63,124 +63,106 @@ class AddEditFriend extends Component {
         }
 
         return (
-            <div>
-                {/* <h3>add / edit friend</h3>
-                <form onSubmit={this.handleSubmit}>
-                    <input value={this.state.first_name} type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
-                    <input value={this.state.last_name} type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
-                    <input value={this.state.email} type="text" placeholder="email address" onChange={this.handleInputChangeFor('email')} />
-                    <input value={this.state.sms} type="text" placeholder="sms number" onChange={this.handleInputChangeFor('sms')} />
-                    <input value={this.state.url} type="text" placeholder="url" onChange={this.handleInputChangeFor('url')} />
-                    <select value={this.state.pref} onChange={this.handleInputChangeFor('pref')}>
-                        <option value="email">email</option>
-                        <option value="sms">sms</option>
-                        <option value="url">url</option>
-                    </select>
-                    <select value={this.state.frequency} onChange={this.handleInputChangeFor('frequency')}>
-                        <option value={1}>weekly</option>
-                        <option value={2}>bi-weekly</option>
-                    </select>
-                    <input value={this.state.last_date} type="date" placeholder="last date of contact" onChange={this.handleInputChangeFor('last_date')} />
-                    <select value={this.state.last_type} onChange={this.handleInputChangeFor('last_type')}>
-                        <option value="email">email</option>
-                        <option value="sms">sms</option>
-                        <option value="url">url</option>
-                    </select>
-                    <br />
-                    {submitButton}
-                    <button onClick={this.handleClear}>clear form</button>
-                </form> */}
-
-                <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
-                    <div>
-                        <h3>add / edit friend</h3>
-                    </div>
-                    <div id="nameInputs">
-                        <TextField 
-                            value={this.state.first_name} 
-                            type="text" 
-                            label="first name" 
+            <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
+                <div>
+                    <h3>add / edit friend</h3>
+                </div>
+                <Grid container id="nameInputs" spacing={2}>
+                    <Grid item xs={6}>
+                        <TextField
+                            value={this.state.first_name}
+                            type="text"
+                            label="first name"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('first_name')} />
-                        <TextField 
-                            value={this.state.last_name} 
-                            type="text" 
-                            label="last name" 
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            value={this.state.last_name}
+                            type="text"
+                            label="last name"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('last_name')} />
-                    </div>
-                    <div id="addressInputs">
-                        <TextField 
-                            value={this.state.email} 
-                            type="text" 
-                            label="email address" 
+                    </Grid>
+                </Grid>
+                <Grid container id="addressInputs" spacing={2}>
+                    <Grid item xs={6}>
+                        <TextField
+                            value={this.state.email}
+                            type="text"
+                            label="email address"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('email')} />
-                        <TextField 
-                            value={this.state.sms} 
-                            type="text" 
-                            label="sms number" 
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            value={this.state.sms}
+                            type="text"
+                            label="sms number"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('sms')} />
-                        <TextField 
-                            value={this.state.url} 
-                            type="text" 
-                            label="url" 
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            value={this.state.url}
+                            type="text"
+                            label="url"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('url')} />
-                        <TextField 
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
                             select
-                            value={this.state.pref} 
+                            value={this.state.pref}
                             label="preferred contact method"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('pref')} >
-                                <MenuItem value="email">email</MenuItem>
-                                <MenuItem value="sms">sms</MenuItem>
-                                <MenuItem value="url">url</MenuItem>
+                            <MenuItem value="email">email</MenuItem>
+                            <MenuItem value="sms">sms</MenuItem>
+                            <MenuItem value="url">url</MenuItem>
                         </TextField>
-                    </div>
-                    <div id="timingInputs">
-                        <TextField 
-                            value={this.state.frequency} 
-                            type="number"
-                            label="frequency"
-                            variant="outlined"
-                            margin="normal"
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">days</InputAdornment>,
-                            }}
-                            onChange={this.handleInputChangeFor('frequency')} />
-                        <TextField 
-                            value={this.state.last_date} 
-                            type="date" 
-                            label="last date of contact" 
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('last_date')} />
-                        <TextField 
-                            select
-                            value={this.state.last_type} 
-                            label="last contact method"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('last_type')} >
-                                <MenuItem value="email">email</MenuItem>
-                                <MenuItem value="sms">sms</MenuItem>
-                                <MenuItem value="url">url</MenuItem>
-                        </TextField>
-                    </div>
-                    <div id="buttonArea">
-                        {submitButton}
-                    </div>
-                </form>
-
-            </div>
+                    </Grid>
+                </Grid>
+                <div id="timingInputs">
+                    <TextField 
+                        value={this.state.frequency} 
+                        type="number"
+                        label="frequency"
+                        variant="outlined"
+                        margin="normal"
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">days</InputAdornment>,
+                        }}
+                        onChange={this.handleInputChangeFor('frequency')} />
+                    <TextField 
+                        value={this.state.last_date} 
+                        type="date" 
+                        label="last date of contact" 
+                        variant="outlined"
+                        margin="normal"
+                        onChange={this.handleInputChangeFor('last_date')} />
+                    <TextField 
+                        select
+                        value={this.state.last_type} 
+                        label="last contact method"
+                        variant="outlined"
+                        margin="normal"
+                        onChange={this.handleInputChangeFor('last_type')} >
+                            <MenuItem value="email">email</MenuItem>
+                            <MenuItem value="sms">sms</MenuItem>
+                            <MenuItem value="url">url</MenuItem>
+                    </TextField>
+                </div>
+                <div id="buttonArea">
+                    {submitButton}
+                </div>
+            </form>
         )
     }
 }
