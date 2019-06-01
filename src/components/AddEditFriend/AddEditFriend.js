@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {TextField, MenuItem, InputAdornment, Button, Grid} from '@material-ui/core';
+import './AddEditFriend.css';
 
 class AddEditFriend extends Component {
 
@@ -16,22 +17,6 @@ class AddEditFriend extends Component {
         last_date: this.props.redux.editFriend.last_date || 
             new Date().toISOString().substr(0,10)
     } //end state
-
-    handleClear = (event) => {
-        event.preventDefault();
-        this.props.dispatch({type: 'CLEAR_EDIT_FRIEND'});
-        this.setState({
-            first_name: '',
-            last_name: '',
-            email: '',
-            sms: '',
-            url: '',
-            pref: '',
-            frequency: '',
-            last_type: '',
-            last_date: ''
-        })
-    }
 
     handleInputChangeFor = propertyName => event => {
         this.setState({
@@ -68,8 +53,12 @@ class AddEditFriend extends Component {
                     <h3>add / edit friend</h3>
                 </div>
                 <Grid container id="nameInputs" spacing={2}>
+                    <Grid item xs={12}>
+                        <h4>What is your friend's name?</h4>
+                    </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            className="textField"
                             value={this.state.first_name}
                             type="text"
                             label="first name"
@@ -79,6 +68,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            className="textField"
                             value={this.state.last_name}
                             type="text"
                             label="last name"
@@ -88,8 +78,12 @@ class AddEditFriend extends Component {
                     </Grid>
                 </Grid>
                 <Grid container id="addressInputs" spacing={2}>
+                    <Grid item xs={12}>
+                        <h4>How will you contact them?</h4>
+                    </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            className="textField"
                             value={this.state.email}
                             type="text"
                             label="email address"
@@ -99,6 +93,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            className="textField"
                             value={this.state.sms}
                             type="text"
                             label="sms number"
@@ -108,6 +103,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            className="textField"
                             value={this.state.url}
                             type="text"
                             label="url"
@@ -118,6 +114,7 @@ class AddEditFriend extends Component {
                     <Grid item xs={6}>
                         <TextField
                             select
+                            className="textField"
                             value={this.state.pref}
                             label="preferred contact method"
                             variant="outlined"
@@ -129,42 +126,57 @@ class AddEditFriend extends Component {
                         </TextField>
                     </Grid>
                 </Grid>
-                <div id="timingInputs">
-                    <TextField 
-                        value={this.state.frequency} 
-                        type="number"
-                        label="frequency"
-                        variant="outlined"
-                        margin="normal"
-                        InputProps={{
-                            endAdornment: <InputAdornment position="end">days</InputAdornment>,
-                        }}
-                        onChange={this.handleInputChangeFor('frequency')} />
-                    <TextField 
-                        value={this.state.last_date} 
-                        type="date" 
-                        label="last date of contact" 
-                        variant="outlined"
-                        margin="normal"
-                        onChange={this.handleInputChangeFor('last_date')} />
-                    <TextField 
-                        select
-                        value={this.state.last_type} 
-                        label="last contact method"
-                        variant="outlined"
-                        margin="normal"
-                        onChange={this.handleInputChangeFor('last_type')} >
+                <Grid container id="timingInputs" spacing={2}>
+                    <Grid item xs={12}>
+                        <h4>When and how did you last contact them?</h4>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            className="textField"
+                            value={this.state.last_date}
+                            type="date"
+                            label="last date of contact"
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('last_date')} />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            select
+                            className="textField"
+                            value={this.state.last_type}
+                            label="last contact method"
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('last_type')} >
                             <MenuItem value="email">email</MenuItem>
                             <MenuItem value="sms">sms</MenuItem>
                             <MenuItem value="url">url</MenuItem>
-                    </TextField>
-                </div>
+                        </TextField>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <h4>How often would you like to contact them?</h4>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            className="textField"
+                            value={this.state.frequency}
+                            type="number"
+                            label="frequency"
+                            variant="outlined"
+                            margin="normal"
+                            InputProps={{
+                                endAdornment: <InputAdornment position="end">days</InputAdornment>,
+                            }}
+                            onChange={this.handleInputChangeFor('frequency')} />
+                    </Grid>
+                </Grid>
                 <div id="buttonArea">
                     {submitButton}
                 </div>
             </form>
         )
-    }
+    } //end render
 }
 
 const mapRedux = (redux) => {

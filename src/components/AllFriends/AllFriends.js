@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Table, TableBody, TableCell, TableHead, TableRow} from '@material-ui/core';
+import './AllFriends.css';
 
 class AllFriends extends Component {
 
@@ -37,41 +39,41 @@ class AllFriends extends Component {
     render() {
 
         let eachFriendRow = this.props.redux.friend.map(friend => {
-            return <tr key={friend.id}>
-                <td>{friend.first_name}</td>
-                <td>{friend.last_name}</td>
-                <td>{friend.last_date}</td>
-                <td>{friend.due_date}</td>
-                <td>{friend.frequency}</td>
-                <td>
+            return <TableRow key={friend.id}>
+                <TableCell>{friend.first_name}</TableCell>
+                <TableCell>{friend.last_name}</TableCell>
+                <TableCell>{friend.last_date}</TableCell>
+                <TableCell>{friend.due_date}</TableCell>
+                <TableCell>{friend.frequency}</TableCell>
+                <TableCell>
                     <button onClick={() => this.handleExtraDay(friend.id)}>+1</button>
                     <button onClick={() => this.handleEmail(friend)}>email</button>
                     <button onClick={() => this.handleSMS(friend)}>sms</button>
                     <button onClick={() => this.handleUrl(friend)}>url</button>
                     <button onClick={()=> this.handleEdit(friend)}>edit</button>
                     <button onClick={()=> this.handleDelete(friend.id)}>delete</button>
-                </td>
-            </tr>
+                </TableCell>
+            </TableRow>
         })
 
         return (
-            <div>
+            <div id="allFriendsContainer">
                 <button onClick={this.handleAddClick}>add new friend</button>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Last Contacted</th>
-                            <th>Due Date</th>
-                            <th>Frequency</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <Table className="allFriendsTable">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>First Name</TableCell>
+                            <TableCell>Last Name</TableCell>
+                            <TableCell>Last Contacted</TableCell>
+                            <TableCell>Due Date</TableCell>
+                            <TableCell>Frequency</TableCell>
+                            <TableCell>Actions</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {eachFriendRow}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </div>
         )
     }
