@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table, TableBody, TableCell, TableHead, TableRow} from '@material-ui/core';
+import {Table, TableBody, TableCell, TableHead, TableRow} from '@material-ui/core';
 import './AllFriends.css';
 
 class AllFriends extends Component {
@@ -58,22 +58,22 @@ class AllFriends extends Component {
 
         return (
             <div id="allFriendsContainer">
-                <button onClick={this.handleAddClick}>add new friend</button>
-                <Table className="allFriendsTable">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>First Name</TableCell>
-                            <TableCell>Last Name</TableCell>
-                            <TableCell>Last Contacted</TableCell>
-                            <TableCell>Due Date</TableCell>
-                            <TableCell>Frequency</TableCell>
-                            <TableCell>Actions</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {eachFriendRow}
-                    </TableBody>
-                </Table>
+                    <button onClick={this.handleAddClick}>add new friend</button>
+                    <Table className="allFriendsTable">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>First Name</TableCell>
+                                <TableCell>Last Name</TableCell>
+                                <TableCell>Last Contacted</TableCell>
+                                <TableCell>Due Date</TableCell>
+                                <TableCell>Frequency</TableCell>
+                                <TableCell>Actions</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {eachFriendRow}
+                        </TableBody>
+                    </Table>
             </div>
         )
     }
