@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {TextField, MenuItem, InputAdornment, Button} from '@material-ui/core';
 
 class AddEditFriend extends Component {
 
@@ -12,7 +13,8 @@ class AddEditFriend extends Component {
         pref: this.props.redux.editFriend.pref || '',
         frequency: this.props.redux.editFriend.frequency || '',
         last_type: this.props.redux.editFriend.last_type || '',
-        last_date: this.props.redux.editFriend.last_date || ''
+        last_date: this.props.redux.editFriend.last_date || 
+            new Date().toISOString().substr(0,10)
     } //end state
 
     handleClear = (event) => {
@@ -55,14 +57,14 @@ class AddEditFriend extends Component {
         let submitButton;
 
         if (this.props.redux.editFriend.id) {
-            submitButton = <button type="submit">update friend</button>
+            submitButton = <Button type="submit" variant="contained" color="primary">update friend</Button>
         } else {
-            submitButton = <button type="submit">add friend</button>
+            submitButton = <Button type="submit" variant="contained" color="primary">add friend</Button>
         }
 
         return (
             <div>
-                <h3>add / edit friend</h3>
+                {/* <h3>add / edit friend</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input value={this.state.first_name} type="text" placeholder="first name" onChange={this.handleInputChangeFor('first_name')} />
                     <input value={this.state.last_name} type="text" placeholder="last name" onChange={this.handleInputChangeFor('last_name')} />
@@ -87,7 +89,97 @@ class AddEditFriend extends Component {
                     <br />
                     {submitButton}
                     <button onClick={this.handleClear}>clear form</button>
+                </form> */}
+
+                <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
+                    <div>
+                        <h3>add / edit friend</h3>
+                    </div>
+                    <div id="nameInputs">
+                        <TextField 
+                            value={this.state.first_name} 
+                            type="text" 
+                            label="first name" 
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('first_name')} />
+                        <TextField 
+                            value={this.state.last_name} 
+                            type="text" 
+                            label="last name" 
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('last_name')} />
+                    </div>
+                    <div id="addressInputs">
+                        <TextField 
+                            value={this.state.email} 
+                            type="text" 
+                            label="email address" 
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('email')} />
+                        <TextField 
+                            value={this.state.sms} 
+                            type="text" 
+                            label="sms number" 
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('sms')} />
+                        <TextField 
+                            value={this.state.url} 
+                            type="text" 
+                            label="url" 
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('url')} />
+                        <TextField 
+                            select
+                            value={this.state.pref} 
+                            label="preferred contact method"
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('pref')} >
+                                <MenuItem value="email">email</MenuItem>
+                                <MenuItem value="sms">sms</MenuItem>
+                                <MenuItem value="url">url</MenuItem>
+                        </TextField>
+                    </div>
+                    <div id="timingInputs">
+                        <TextField 
+                            value={this.state.frequency} 
+                            type="number"
+                            label="frequency"
+                            variant="outlined"
+                            margin="normal"
+                            InputProps={{
+                                endAdornment: <InputAdornment position="end">days</InputAdornment>,
+                            }}
+                            onChange={this.handleInputChangeFor('frequency')} />
+                        <TextField 
+                            value={this.state.last_date} 
+                            type="date" 
+                            label="last date of contact" 
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('last_date')} />
+                        <TextField 
+                            select
+                            value={this.state.last_type} 
+                            label="last contact method"
+                            variant="outlined"
+                            margin="normal"
+                            onChange={this.handleInputChangeFor('last_type')} >
+                                <MenuItem value="email">email</MenuItem>
+                                <MenuItem value="sms">sms</MenuItem>
+                                <MenuItem value="url">url</MenuItem>
+                        </TextField>
+                    </div>
+                    <div id="buttonArea">
+                        {submitButton}
+                    </div>
                 </form>
+
             </div>
         )
     }
