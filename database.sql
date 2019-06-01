@@ -29,8 +29,8 @@ CREATE TABLE "friend" (
 --create address table --> holds addresses for each contact
 CREATE TABLE "address" (
 	"id" SERIAL PRIMARY KEY,
-	"email" VARCHAR(50) UNIQUE,
-	"sms" VARCHAR(10) UNIQUE,
+	"email" VARCHAR(50),
+	"sms" VARCHAR(10),
 	"url" VARCHAR(255),
 	"pref" ADDRESS_TYPE NOT NULL,
 	"friend_id" INT UNIQUE NOT NULL REFERENCES "friend" ON DELETE CASCADE
