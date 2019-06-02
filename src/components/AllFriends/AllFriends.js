@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Table, TableBody, TableCell, TableHead, TableRow} from '@material-ui/core';
+import {Table, TableBody, TableCell, TableHead, TableRow, IconButton} from '@material-ui/core';
+import {AddAlert, Bookmark, Delete, Edit, Email, Sms} from '@material-ui/icons';
 import './AllFriends.css';
 
 class AllFriends extends Component {
@@ -46,12 +47,24 @@ class AllFriends extends Component {
                 <TableCell>{friend.due_date}</TableCell>
                 <TableCell>{friend.frequency}</TableCell>
                 <TableCell>
-                    <button onClick={() => this.handleExtraDay(friend.id)}>+1</button>
-                    <button onClick={() => this.handleEmail(friend)}>email</button>
-                    <button onClick={() => this.handleSMS(friend)}>sms</button>
-                    <button onClick={() => this.handleUrl(friend)}>url</button>
-                    <button onClick={()=> this.handleEdit(friend)}>edit</button>
-                    <button onClick={()=> this.handleDelete(friend.id)}>delete</button>
+                    <IconButton onClick={() => this.handleExtraDay(friend.id)}>
+                        <AddAlert />
+                    </IconButton>
+                    <IconButton onClick={() => this.handleEmail(friend)}>
+                        <Email />
+                    </IconButton>
+                    <IconButton onClick={() => this.handleSMS(friend)}>
+                        <Sms />
+                    </IconButton>
+                    <IconButton onClick={() => this.handleUrl(friend)}>
+                        <Bookmark />
+                    </IconButton>
+                    <IconButton onClick={() => this.handleEdit(friend)}>
+                        <Edit />
+                    </IconButton>
+                    <IconButton onClick={() => this.handleDelete(friend.id)}>
+                        <Delete />
+                    </IconButton>
                 </TableCell>
             </TableRow>
         })
