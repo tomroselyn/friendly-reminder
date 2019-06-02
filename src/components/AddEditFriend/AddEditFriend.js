@@ -37,7 +37,7 @@ class AddEditFriend extends Component {
 
     render() {
 
-        // console.log(this.state);
+        // console.log(this.state.frequency);
 
         let submitButton;
 

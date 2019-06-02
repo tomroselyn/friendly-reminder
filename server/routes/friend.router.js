@@ -37,7 +37,9 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     const friend = req.body
     //calculate due date
     const dueDate = new Date(friend.last_date);
-    dueDate.setDate(dueDate.getDate() + (friend.frequency * 7));
+    // console.log('due date initial state:', dueDate);
+    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
+    // console.log('due date after calculation:', dueDate);
 
     //use the same connection for all queries
     const connection = await pool.connect()
@@ -83,7 +85,9 @@ router.put('/:id', rejectUnauthenticated, async (req, res) => {
     const friend = req.body
     //calculate due date
     const dueDate = new Date(friend.last_date);
-    dueDate.setDate(dueDate.getDate() + (friend.frequency * 7));
+    // console.log('due date initial state:', dueDate);
+    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
+    // console.log('due date after calculation:', dueDate);
 
     //use the same connection for all queries
     const connection = await pool.connect()
