@@ -32,7 +32,7 @@ class AllFriends extends Component {
     }
 
     handleSMS = (friend) => {
-        console.log('sending an SMS');
+        //sweet alert requiring confirmation
         swal({
             title: `did you text ${friend.first_name}?`,
             text: `send sms to: ${friend.sms || '(no number listed)'}`,
@@ -48,8 +48,21 @@ class AllFriends extends Component {
     }
 
     handleUrl = (friend) => {
+        //go to link
         window.open(friend.url);
-        this.props.dispatch({type: 'MARK_CONTACTED', payload: friend, contact_type: 'url' });
+        //sweet alert requiring confirmation
+        swal({
+            title: `did you contact ${friend.first_name}?`,
+            text: `visit: ${friend.url || '(no website listed)'}`,
+            icon: "warning",
+            buttons: ["oops, no I didn't", "yep, made contact!"]
+        })
+            .then((willConfirm) => {
+                if (willConfirm) {
+                    swal("contact complete!", "", "success");
+                    this.props.dispatch({ type: 'MARK_CONTACTED', payload: friend, contact_type: 'url' });
+                }
+            });
     }
 
     render() {
