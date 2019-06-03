@@ -21,7 +21,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     const getQuery = `SELECT "friend".id, "friend".first_name, "friend".last_name, "address".email, "address".sms, "address".url, "address".pref, "timing".frequency, "timing".last_type, "timing".last_date, "timing".due_date FROM "friend"
     JOIN "address" ON "address".friend_id = "friend".id
     JOIN "timing" ON "timing".friend_id = "friend".id
-    WHERE "user_id" = $1;`;
+    WHERE "user_id" = $1 ORDER BY "friend".id;`;
     pool.query(getQuery, [req.user.id])
     .then(getQueryResult => {
         res.send(getQueryResult.rows);
