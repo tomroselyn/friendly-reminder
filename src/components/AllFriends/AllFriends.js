@@ -26,9 +26,9 @@ class AllFriends extends Component {
         this.props.dispatch({type: 'EXTRA_DAY', payload: idToUpdate});
     }
 
-    handleEmail = (friend) => {
-        window.open(`mailto:${friend.email}`);
-        this.props.dispatch({type: 'MARK_CONTACTED', payload: friend, contact_type: 'email' });
+    handleEmail = (friendToEmail) => {
+        this.props.dispatch({ type: 'SET_EDIT_FRIEND', payload: friendToEmail });
+        this.props.history.push('/send-email');
     }
 
     handleSMS = (friend) => {

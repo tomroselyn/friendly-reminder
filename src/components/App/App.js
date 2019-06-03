@@ -20,7 +20,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import AllFriends from '../AllFriends/AllFriends';
 import AddEditFriend from '../AddEditFriend/AddEditFriend';
 import AccountInfo from '../AccountInfo/AccountInfo';
-import SendEmail from '../SendEmail/SendEmail';
+import EmailForm from '../EmailForm/EmailForm';
 
 import './App.css';
 
@@ -74,7 +74,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/send-email"
-              component={SendEmail}
+              component={EmailForm}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
