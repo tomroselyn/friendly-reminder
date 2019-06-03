@@ -12,8 +12,22 @@ class AllFriends extends Component {
         this.props.history.push('/add-edit-friend');
     }
 
-    handleDelete = (idToDelete) => {
-        this.props.dispatch({type: 'DELETE_FRIEND', payload: idToDelete})
+    handleDelete = (friendToDelete) => {
+        //sweet alert requiring confirmation
+        swal({
+            title: `are you sure about this?`,
+            text: `deleting: ${friendToDelete.first_name} ${friendToDelete.last_name}`,
+            icon: "warning",
+            buttons: ["no, don't!", "go ahead"],
+            dangerMode: true
+        })
+            .then((willConfirm) => {
+                if (willConfirm) {
+                    swal("friendship over!", "", "success");
+                    this.props.dispatch({ type: 'DELETE_FRIEND', payload: friendToDelete.id });
+                }
+            });
+        
     }
 
     handleEdit = (friendToEdit) => {
@@ -24,6 +38,7 @@ class AllFriends extends Component {
     handleExtraDay = (idToUpdate) => {
         console.log('adding extra day to due date');
         this.props.dispatch({type: 'EXTRA_DAY', payload: idToUpdate});
+        swal("due date extended!", "", "success");
     }
 
     handleEmail = (friendToEmail) => {
@@ -90,7 +105,7 @@ class AllFriends extends Component {
                     <IconButton onClick={() => this.handleEdit(friend)}>
                         <Edit />
                     </IconButton>
-                    <IconButton onClick={() => this.handleDelete(friend.id)}>
+                    <IconButton onClick={() => this.handleDelete(friend)}>
                         <Delete />
                     </IconButton>
                 </TableCell>
