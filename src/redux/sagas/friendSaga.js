@@ -43,6 +43,16 @@ function* getFriends(action) {
     }
 } //end getFriends
 
+function* markContacted(action) {
+    try {
+        yield axios.put(`/api/friend/contact/${action.payload.id}`, 
+            {friend: action.payload, contact_type: action.contact_type});
+        yield put({ type: 'GET_FRIENDS' });
+    } catch(err) {
+        console.log('markContacted saga error:', err);
+    }
+}
+
 function* updateFriend(action) {
     try {
         yield axios.put(`/api/friend/${action.id}`, action.payload);
@@ -58,6 +68,7 @@ function* friendSaga() {
     yield takeEvery('GET_FRIENDS', getFriends);
     yield takeLatest('UPDATE_FRIEND', updateFriend);
     yield takeEvery('EXTRA_DAY', extraDay);
+    yield takeEvery('MARK_CONTACTED', markContacted);
 }
 
 export default friendSaga;

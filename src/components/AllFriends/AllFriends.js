@@ -27,14 +27,17 @@ class AllFriends extends Component {
 
     handleEmail = (friend) => {
         window.open(`mailto:${friend.email}`);
+        this.props.dispatch({type: 'MARK_CONTACTED', payload: friend, contact_type: 'email' });
     }
 
     handleSMS = (friend) => {
-        console.log('sending an SMS')
+        console.log('sending an SMS');
+        this.props.dispatch({type: 'MARK_CONTACTED', payload: friend, contact_type: 'sms'});
     }
 
     handleUrl = (friend) => {
         window.open(friend.url);
+        this.props.dispatch({type: 'MARK_CONTACTED', payload: friend, contact_type: 'url' });
     }
 
     render() {

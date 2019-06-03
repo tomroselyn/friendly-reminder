@@ -139,4 +139,23 @@ router.put('/extraday/:id', rejectUnauthenticated, (req, res) => {
 
 }); //end PUT extra day by id
 
+//PUT mark contacted by id
+router.put('/contact/:id', rejectUnauthenticated, (req, res) => {
+    const friend = req.body.friend;
+    const contactType = req.body.contact_type;
+    const dueDate = new Date();
+    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
+    // console.log('due date after calculation:', dueDate);
+
+    const markContactedQuery = `UPDATE "timing" SET "last_type" = $1, "last_date" = current_date, "due_date" = $2 WHERE "friend_id" = $3;`;
+    pool.query(markContactedQuery, [contactType, dueDate, req.params.id])
+        .then(result => {
+            res.sendStatus(200);
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        }); //end mark contacted query
+
+}); //end PUT mark contacted by id
+
 module.exports = router;
