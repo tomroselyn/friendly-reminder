@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Table, TableBody, TableCell, TableHead, TableRow, IconButton} from '@material-ui/core';
 import {AddAlert, Bookmark, Delete, Edit, Email, Sms} from '@material-ui/icons';
+import swal from 'sweetalert';
 import './AllFriends.css';
 
 class AllFriends extends Component {
@@ -32,7 +33,18 @@ class AllFriends extends Component {
 
     handleSMS = (friend) => {
         console.log('sending an SMS');
-        this.props.dispatch({type: 'MARK_CONTACTED', payload: friend, contact_type: 'sms'});
+        swal({
+            title: `did you text ${friend.first_name}?`,
+            text: `send sms to: ${friend.sms || '(no number listed)'}`,
+            icon: "warning",
+            buttons: ["oops, no I didn't", "yep, text sent!"]
+        })
+            .then((willConfirm) => {
+                if (willConfirm) {
+                    swal("contact complete!", "", "success");
+                    this.props.dispatch({ type: 'MARK_CONTACTED', payload: friend, contact_type: 'sms' });
+                }
+            });
     }
 
     handleUrl = (friend) => {
