@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {TextField, MenuItem, InputAdornment, Button, Grid} from '@material-ui/core';
+import swal from 'sweetalert';
 import './AddEditFriend.css';
 
 class AddEditFriend extends Component {
@@ -26,12 +27,15 @@ class AddEditFriend extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+
         if (this.props.redux.editFriend.id) {
-            this.props.dispatch({type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editFriend.id});
+            this.props.dispatch({ type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editFriend.id });
+            swal("friend updated!", "", "success");
+            this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
         } else {
             this.props.dispatch({ type: 'ADD_FRIEND', payload: this.state });
+            swal("friend added!", "", "success");
         }
-        this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
         this.props.history.push('/all-friends');
     } //end handleSubmit
 
