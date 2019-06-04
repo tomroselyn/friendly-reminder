@@ -4,7 +4,11 @@ import DashboardStats from '../DashboardStats/DashboardStats';
 import DashboardCarousel from '../DashboardCarousel/DashboardCarousel';
 
 class Dashboard extends Component {
+
     render() {
+
+        console.log('dashboard render:', this.props.redux.friend);
+
         return (
             <div>
                 <div>
@@ -21,4 +25,8 @@ class Dashboard extends Component {
     }
 }
 
-export default connect()(Dashboard);
+const mapRedux = redux => {
+    return {redux}
+}
+
+export default connect(mapRedux)(Dashboard);

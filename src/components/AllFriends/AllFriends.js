@@ -86,8 +86,8 @@ class AllFriends extends Component {
             return <TableRow key={friend.id}>
                 <TableCell>{friend.first_name}</TableCell>
                 <TableCell>{friend.last_name}</TableCell>
-                <TableCell>{friend.last_date}</TableCell>
-                <TableCell>{friend.due_date}</TableCell>
+                <TableCell>{friend.last_date.substr(0, 10)}</TableCell>
+                <TableCell>{friend.due_date.substr(0, 10)}</TableCell>
                 <TableCell>{friend.frequency}</TableCell>
                 <TableCell>
                     <IconButton onClick={() => this.handleExtraDay(friend.id)}>
