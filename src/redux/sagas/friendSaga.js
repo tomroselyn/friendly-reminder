@@ -33,26 +33,35 @@ function* getFriends(action) {
         let friendList = yield axios.get('/api/friend');
         let dueNowList = [];
         let overDueList = [];
+
         //sorting by date into dueNow, overDue and friendList (all friends)
         yield friendList.data.map(friend => {
-            const friendDueDate = new Date(friend.due_date);
+
+            const friendDueDate = new Date(friend.due_date)
+                friendDueDate.setHours(0)
+                friendDueDate.setMinutes(0)
+                friendDueDate.setSeconds(0)
+                friendDueDate.setMilliseconds(0);
+
             const today = new Date();
-            if (friendDueDate > today) {
+                today.setHours(0)
+                today.setMinutes(0)
+                today.setSeconds(0)
+                today.setMilliseconds(0);
+
+            if (friendDueDate < today) {
                 overDueList.push(friend);
             } else if (friendDueDate.getTime() === today.getTime()) {
-                dueNowList.push(friend);
-            }
+                dueNowList.push(friend); }
+
             return friend;
-        })
-        //map data and reformat dates to yyyy-mm-dd
-        // let formattedFriendList = friendList.data.map(friend => {
-        //     friend.last_date = friend.last_date.substr(0, 10);
-        //     friend.due_date = friend.due_date.substr(0,10);
-        //     return friend;
-        // })
+        }) //end map
+        
+        //send data to reducers
         yield put({type: 'SET_FRIENDS', payload: friendList.data});
         yield put({type: 'SET_DUE_NOW', payload: dueNowList});
         yield put({ type: 'SET_OVERDUE', payload: overDueList });
+
     } catch(err) {
         console.log('getFriends saga error:', err);
     }

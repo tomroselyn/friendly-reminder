@@ -6,66 +6,25 @@ import {Grid} from '@material-ui/core';
 class DashboardStats extends Component {
 
     state = {
-        onTime: 8,
-        dueNow: 3,
-        overDue: 1
+        onTime: this.props.redux.friend.length - (this.props.redux.dueNow.length + this.props.redux.overdue.length),
+        dueNow: this.props.redux.dueNow.length,
+        overDue: this.props.redux.overdue.length
     }
-
-    // componentDidMount = () => {
-    //     for (let friend of this.props.redux.friend) {
-    //         let friendDueDate = new Date(friend.due_date)
-    //         // console.log(friendDueDate);
-    //         if (friendDueDate.getTime() > this.state.today.getTime()) {
-    //             this.setState({
-    //                 ...this.state,
-    //                 onTime: this.state.dueNow + 1
-    //             })
-    //         } else if (friendDueDate.getTime() === this.state.today.getTime()) {
-    //             this.setState({
-    //                 ...this.state,
-    //                 dueNow: this.state.dueNow + 1
-    //             })
-    //         } else if (friendDueDate.getTime() > this.state.today.getTime()) {
-    //             this.setState({
-    //                 ...this.state,
-    //                 overDue: this.state.dueNow + 1
-    //             })
-    //         }
-    //     } //end for loop
-    // }
             
     render() {
-
-        // console.log(this.props.redux.friend);
-        // console.log(this.state)
-
-        // let testData = [
-        //     { title: 'on time', value: 0, color: 'darkgreen' },
-        //     { title: 'due now', value: 0, color: 'darkorange' },
-        //     { title: 'overdue', value: 0, color: 'darkred' }
-        // ];
-
-        // this.props.redux.friend.map(friend => {
-        //     let friendDueDate = new Date(friend.due_date);
-        //     if (friendDueDate > this.state.today) {
-        //         testData[0].value++;
-        //     }
-        //     return friend;
-        // })
-
-        // console.log('testData:', testData);
 
         return (
             <div>
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
+                        {/* pie chart shows number of friends in each category: on time, due now, and overdue */}
                         <PieChart
                             data={[
                                 { title: 'on time', value: this.state.onTime, color: 'darkgreen' },
                                 { title: 'due now', value: this.state.dueNow, color: 'darkorange' },
                                 { title: 'overdue', value: this.state.overDue, color: 'darkred' },
                             ]}
-                            style={{ height: '400px' }}
+                            style={{ height: '333px' }}
                             lineWidth={66}
                             paddingAngle={15}
                             animate

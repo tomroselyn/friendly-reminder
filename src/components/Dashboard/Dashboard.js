@@ -7,8 +7,6 @@ class Dashboard extends Component {
 
     render() {
 
-        console.log('dashboard render:', this.props.redux.friend);
-
         return (
             <div>
                 <div>
