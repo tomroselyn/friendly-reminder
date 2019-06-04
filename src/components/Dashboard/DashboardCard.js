@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Grid, Card, CardContent, CardActions, Typography} from '@material-ui/core';
 import EmailButton from '../Buttons/EmailButton';
 import SmsButton from '../Buttons/SmsButton';
+import UrlButton from '../Buttons/UrlButton';
 
 class DashboardCard extends Component {
     render() {
@@ -23,6 +24,7 @@ class DashboardCard extends Component {
                     <CardActions>
                         <EmailButton friendToEmail={this.props.info} />
                         <SmsButton friendToText={this.props.info} />
+                        <UrlButton friendToContact={this.props.info} />
                     </CardActions>
                 </Card>
             </Grid>
