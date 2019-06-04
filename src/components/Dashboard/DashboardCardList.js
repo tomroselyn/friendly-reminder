@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DashboardCard from './DashboardCard';
+import {Grid} from '@material-ui/core';
+import './Dashboard.css';
 
 class DashboardCardList extends Component {
     render() {
@@ -16,9 +18,13 @@ class DashboardCardList extends Component {
         return (
             <div>
                 <h2>due for contact</h2>
-                {dueNow}
+                <Grid container spacing={4} className="cardContainer">
+                    {dueNow}
+                </Grid>
                 <h2>overdue</h2>
-                {overdue}
+                <Grid container spacing={4} className="cardContainer">
+                    {overdue}
+                </Grid>
             </div>
         )
     }
