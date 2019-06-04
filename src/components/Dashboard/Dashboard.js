@@ -1,23 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import DashboardStats from '../DashboardStats/DashboardStats';
-import DashboardCarousel from '../DashboardCarousel/DashboardCarousel';
+import DashboardStats from './DashboardStats';
+import DashboardCardList from './DashboardCardList';
+import './Dashboard.css';
 
 class Dashboard extends Component {
 
     render() {
 
         return (
-            <div>
-                <div>
-                    <h3>overview</h3>
-                    <DashboardStats />
-                </div>
-                <div>
-                    <h3>due for contact</h3>
-                    <DashboardCarousel />
-                </div>
-                <button onClick={() => this.props.history.push('/all-friends')}>view all friends</button>
+            <div className="dashboardContainer">
+                <DashboardStats />
+                <DashboardCardList />
             </div>
         )
     }

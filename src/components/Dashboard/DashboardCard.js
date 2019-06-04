@@ -5,11 +5,7 @@ class DashboardCard extends Component {
     render() {
         return (
             <div>
-                <p>CONTACT NAME</p>
-                <p>DUE IN 2 DAYS</p>
-                <p>SEND EMAIL</p>
-                <p>MARK COMPLETE</p>
-                <p>EXTRA DAY</p>
+                <p>{this.props.info.first_name}</p>
             </div>
         )
     }
