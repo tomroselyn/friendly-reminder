@@ -17,7 +17,7 @@ class DashboardCardList extends Component {
 
         return (
             <div>
-                <h2>due for contact</h2>
+                <h2>due today</h2>
                 <Grid container spacing={4} className="cardContainer">
                     {dueNow}
                 </Grid>

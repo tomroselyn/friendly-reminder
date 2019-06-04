@@ -9,3 +9,13 @@
 .cardContainer {
     padding: 50px;
 }
+
+.nowCard {
+    background-color: darkorange !important;
+    color: white !important;
+}
+
+.overCard {
+    background-color: darkred !important;
+    color: white !important;
+}

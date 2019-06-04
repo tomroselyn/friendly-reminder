@@ -4,12 +4,13 @@ import {Grid, Card, CardContent, CardActions, Typography} from '@material-ui/cor
 import EmailButton from '../Buttons/EmailButton';
 import SmsButton from '../Buttons/SmsButton';
 import UrlButton from '../Buttons/UrlButton';
+import './Dashboard.css';
 
 class DashboardCard extends Component {
     render() {
         return (
             <Grid item xs={3}>
-                <Card>
+                <Card className={`${this.props.due}Card`}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
                             {this.props.info.first_name} {this.props.info.last_name}
