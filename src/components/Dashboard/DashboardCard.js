@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Grid, Card, CardContent, CardActions, Button, Typography} from '@material-ui/core';
+import {Grid, Card, CardContent, CardActions, Typography} from '@material-ui/core';
+import EmailButton from '../Buttons/EmailButton';
 
 class DashboardCard extends Component {
     render() {
@@ -19,7 +20,7 @@ class DashboardCard extends Component {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Do something</Button>
+                        <EmailButton friendToEmail={this.props.info} />
                     </CardActions>
                 </Card>
             </Grid>
