@@ -7,10 +7,12 @@ import './Dashboard.css';
 class DashboardCardList extends Component {
     render() {
 
+        //set up cards for friends due today
         const dueNow = this.props.redux.dueNow.map(friend => {
             return <DashboardCard key={friend.id} info={friend} due="now"/>
         })
 
+        //set up cards for friends overdue
         const overdue = this.props.redux.overdue.map(friend => {
             return <DashboardCard key={friend.id} info={friend} due="over" />
         })

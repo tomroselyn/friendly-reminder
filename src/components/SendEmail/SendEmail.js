@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//component no longer used...
+
 class SendEmail extends Component {
     render() {
         return (

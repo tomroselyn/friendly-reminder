@@ -7,11 +7,13 @@ import './AllFriends.css';
 
 class AllFriends extends Component {
 
+    //clears out editFriend reducer and sends user to add friend form
     handleAddClick = (event) => {
         this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
         this.props.history.push('/add-edit-friend');
     }
 
+    //delete button sequence, using sweet alert confirmation
     handleDelete = (friendToDelete) => {
         //sweet alert requiring confirmation
         swal({
@@ -30,22 +32,26 @@ class AllFriends extends Component {
         
     }
 
+    //edit button adds friend to editFriend reducer, then sends user to form
     handleEdit = (friendToEdit) => {
         this.props.dispatch({type: 'SET_EDIT_FRIEND', payload: friendToEdit});
         this.props.history.push('/add-edit-friend');
     }
 
+    //extra day button sequence, using sweet alert success message
     handleExtraDay = (idToUpdate) => {
         console.log('adding extra day to due date');
         this.props.dispatch({type: 'EXTRA_DAY', payload: idToUpdate});
         swal("due date extended!", "", "success");
     }
 
+    //email button adds friend to editFriend reducer and sends user to send email form
     handleEmail = (friendToEmail) => {
         this.props.dispatch({ type: 'SET_EDIT_FRIEND', payload: friendToEmail });
         this.props.history.push('/send-email');
     }
 
+    //sms button sequence, using sweet alert confirmation
     handleSMS = (friend) => {
         //sweet alert requiring confirmation
         swal({
@@ -62,6 +68,7 @@ class AllFriends extends Component {
             });
     }
 
+    //url button sequence, using sweet alert confirmation
     handleUrl = (friend) => {
         //go to link
         window.open(friend.url);
@@ -82,6 +89,7 @@ class AllFriends extends Component {
 
     render() {
 
+        //setting up table rows by mapping friend reducer data
         let eachFriendRow = this.props.redux.friend.map(friend => {
             return <TableRow key={friend.id}>
                 <TableCell>{friend.first_name}</TableCell>

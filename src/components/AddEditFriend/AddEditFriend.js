@@ -6,6 +6,7 @@ import './AddEditFriend.css';
 
 class AddEditFriend extends Component {
 
+    //all the field forms, date is generated to default that field to today
     state = {
         first_name: this.props.redux.editFriend.first_name || '',
         last_name: this.props.redux.editFriend.last_name || '',
@@ -27,11 +28,13 @@ class AddEditFriend extends Component {
     handleSubmit = event => {
         event.preventDefault();
 
+        //if there's a friend in the editFriend reducer, update them
         if (this.props.redux.editFriend.id) {
             this.props.dispatch({ type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editFriend.id });
             swal("friend updated!", "", "success");
             this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
         } else {
+            //otherwise, add as a new friend
             this.props.dispatch({ type: 'ADD_FRIEND', payload: this.state });
             swal("friend added!", "", "success");
         }
@@ -42,6 +45,7 @@ class AddEditFriend extends Component {
 
         // console.log(this.state.frequency);
 
+        //if there's a friend in the editFriend reducer, render button as 'update friend'
         let submitButton;
 
         if (this.props.redux.editFriend.id) {

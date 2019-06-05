@@ -17,10 +17,10 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   loginMode, // will have a value of 'login' or 'registration' to control which screen is shown
   user, // will have an id and username if someone is logged in
-  friend,
-  editFriend,
-  dueNow,
-  overdue,
+  friend, //holds list of all the user's friends
+  editFriend, //holds one friend for editing and emailing
+  dueNow, //hold list of friends with due date of today
+  overdue, //holds list of friends with due date passed
 });
 
 export default rootReducer;
