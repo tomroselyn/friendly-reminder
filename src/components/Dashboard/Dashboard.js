@@ -1,24 +1,13 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
 import DashboardStats from './DashboardStats';
 import DashboardCardList from './DashboardCardList';
 import './Dashboard.css';
 
-class Dashboard extends Component {
+const Dashboard = () => (
+    <div className="dashboardContainer">
+        <DashboardStats />
+        <DashboardCardList />
+    </div>
+)
 
-    render() {
-
-        return (
-            <div className="dashboardContainer">
-                <DashboardStats />
-                <DashboardCardList />
-            </div>
-        )
-    }
-}
-
-const mapRedux = redux => {
-    return {redux}
-}
-
-export default connect(mapRedux)(Dashboard);
+export default Dashboard;
