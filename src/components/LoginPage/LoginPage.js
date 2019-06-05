@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { TextField, Button, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { TextField, Button, Grid } from '@material-ui/core';
 
 class LoginPage extends Component {
   state = {

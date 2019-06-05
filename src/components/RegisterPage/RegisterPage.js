@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { TextField, Button, Grid } from '@material-ui/core';
 
 class RegisterPage extends Component {
   state = {
@@ -36,6 +37,8 @@ class RegisterPage extends Component {
   render() {
     return (
       <div>
+
+        {/* error messages */}
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -44,70 +47,66 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
+
+        {/* registration form */}
         <form onSubmit={this.registerUser}>
           <h1>register</h1>
-          <div>
-            <label htmlFor="first_name">
-              first name:
-              <input
-                type="text"
-                name="first_name"
-                value={this.state.first_name}
-                onChange={this.handleInputChangeFor('first_name')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="last_name">
-              last name:
-              <input
-                type="text"
-                name="last_name"
-                value={this.state.last_name}
-                onChange={this.handleInputChangeFor('last_name')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="username">
-              email address:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              className="register"
-              type="submit"
-              name="submit"
-              value="register"
-            />
-          </div>
+
+          <TextField
+            required
+            className="textField"
+            value={this.state.first_name}
+            type="text"
+            label="first name"
+            variant="outlined"
+            margin="normal"
+            onChange={this.handleInputChangeFor('first_name')} />
+
+          <TextField
+            required
+            className="textField"
+            value={this.state.last_name}
+            type="text"
+            label="last name"
+            variant="outlined"
+            margin="normal"
+            onChange={this.handleInputChangeFor('last_name')} />
+
+          <TextField
+            required
+            className="textField"
+            value={this.state.username}
+            type="text"
+            label="email address"
+            variant="outlined"
+            margin="normal"
+            onChange={this.handleInputChangeFor('username')} />
+
+          <TextField
+            required
+            className="textField"
+            value={this.state.password}
+            type="password"
+            label="password"
+            variant="outlined"
+            margin="normal"
+            onChange={this.handleInputChangeFor('password')} />
+
+          <Button className="register" type="submit" variant="contained" color="primary">
+            register
+          </Button>
+
         </form>
+        
         <center>
-          <button
-            type="button"
+          <Button
+            color="primary"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
-          >
+            onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }} >
             or, log in
-          </button>
+          </Button>
         </center>
+
       </div>
     );
   }
