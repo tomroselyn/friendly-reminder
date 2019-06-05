@@ -4,6 +4,7 @@ import {Grid, Card, CardContent, CardActions, Typography} from '@material-ui/cor
 import EmailButton from '../Buttons/EmailButton';
 import SmsButton from '../Buttons/SmsButton';
 import UrlButton from '../Buttons/UrlButton';
+import ExtraDayButton from '../Buttons/ExtraDayButton';
 import './Dashboard.css';
 
 class DashboardCard extends Component {
@@ -26,6 +27,7 @@ class DashboardCard extends Component {
                         <EmailButton friendToEmail={this.props.info} />
                         <SmsButton friendToText={this.props.info} />
                         <UrlButton friendToContact={this.props.info} />
+                        <ExtraDayButton friendToDelay={this.props.info} />
                     </CardActions>
                 </Card>
             </Grid>
