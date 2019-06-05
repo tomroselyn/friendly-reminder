@@ -43,8 +43,6 @@ class AddEditFriend extends Component {
 
     render() {
 
-        // console.log(this.state.frequency);
-
         //if there's a friend in the editFriend reducer, render button as 'update friend'
         let submitButton;
 
@@ -65,6 +63,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required
                             className="textField"
                             value={this.state.first_name}
                             type="text"
@@ -75,6 +74,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required
                             className="textField"
                             value={this.state.last_name}
                             type="text"
@@ -90,6 +90,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required={this.state.pref === 'email'}
                             className="textField"
                             value={this.state.email}
                             type="text"
@@ -100,6 +101,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required={this.state.pref === 'sms'}
                             className="textField"
                             value={this.state.sms}
                             type="text"
@@ -110,16 +112,18 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required={this.state.pref === 'url'}
                             className="textField"
                             value={this.state.url}
                             type="text"
-                            label="url"
+                            label="website"
                             variant="outlined"
                             margin="normal"
                             onChange={this.handleInputChangeFor('url')} />
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required
                             select
                             className="textField"
                             value={this.state.pref}
@@ -129,7 +133,7 @@ class AddEditFriend extends Component {
                             onChange={this.handleInputChangeFor('pref')} >
                             <MenuItem value="email">email</MenuItem>
                             <MenuItem value="sms">sms</MenuItem>
-                            <MenuItem value="url">url</MenuItem>
+                            <MenuItem value="url">website</MenuItem>
                         </TextField>
                     </Grid>
                 </Grid>
@@ -139,6 +143,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required
                             className="textField"
                             value={this.state.last_date.substr(0, 10)}
                             type="date"
@@ -149,6 +154,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required
                             select
                             className="textField"
                             value={this.state.last_type}
@@ -158,7 +164,7 @@ class AddEditFriend extends Component {
                             onChange={this.handleInputChangeFor('last_type')} >
                             <MenuItem value="email">email</MenuItem>
                             <MenuItem value="sms">sms</MenuItem>
-                            <MenuItem value="url">url</MenuItem>
+                            <MenuItem value="url">website</MenuItem>
                         </TextField>
                     </Grid>
                     <Grid item xs={12}>
@@ -166,6 +172,7 @@ class AddEditFriend extends Component {
                     </Grid>
                     <Grid item xs={6}>
                         <TextField
+                            required
                             className="textField"
                             value={this.state.frequency}
                             type="number"
