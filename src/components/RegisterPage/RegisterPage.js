@@ -54,6 +54,7 @@ class RegisterPage extends Component {
 
           <TextField
             required
+            autoFocus
             className="textField"
             value={this.state.first_name}
             type="text"

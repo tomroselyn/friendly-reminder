@@ -64,6 +64,7 @@ class AddEditFriend extends Component {
                     <Grid item xs={6}>
                         <TextField
                             required
+                            autoFocus
                             className="textField"
                             value={this.state.first_name}
                             type="text"

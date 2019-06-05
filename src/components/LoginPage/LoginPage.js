@@ -50,6 +50,7 @@ class LoginPage extends Component {
 
           <TextField
             required
+            autoFocus
             className="textField"
             value={this.state.username}
             type="text"
