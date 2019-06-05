@@ -7,20 +7,34 @@ import './Dashboard.css';
 class DashboardStats extends Component {
             
     render() {
-
-
         //pie chart shows number of friends in each category: on time, due now, and overdue
         //stats contains a breakdown of relevant information
-        let pieChart = <p>pie chart</p>;
-        let stats = <p>stats breakdown</p>
+        let pieChart = <p>(pie chart)</p>;
+        let stats = <p>(stats breakdown)</p>
         
-        //only render it if there are friends in redux to display info about
+        //only render these if there are friends in redux to display info about
         if (this.props.redux.friend.length) {
+
+            //set up data variables for convenience
+            let upToDate = (this.props.redux.friend.length - (this.props.redux.dueNow.length + this.props.redux.overdue.length));
+            let dueToday = this.props.redux.dueNow.length;
+            let overDue = this.props.redux.overdue.length;
+            let upToDatePct = Math.ceil(100 * (this.props.redux.friend.length - this.props.redux.overdue.length) / this.props.redux.friend.length);
+
+            //set up conditionally rendered success message
+            let successMessage = 'keep up the good work!';
+            if (upToDatePct === 100) {
+                successMessage = 'OMG awesome!';
+            } else if (upToDatePct >= 80) {
+                successMessage = 'way to go!';
+            }
+
+            //set up pie chart
             pieChart = <PieChart
                 data={[
-                    { title: 'on time', value: (this.props.redux.friend.length - (this.props.redux.dueNow.length + this.props.redux.overdue.length)), color: 'darkgreen' },
-                    { title: 'due now', value: this.props.redux.dueNow.length, color: 'darkorange' },
-                    { title: 'overdue', value: this.props.redux.overdue.length, color: 'darkred' },
+                    { title: 'on time', value: upToDate, color: 'darkgreen' },
+                    { title: 'due now', value: dueToday, color: 'darkorange' },
+                    { title: 'overdue', value: overDue, color: 'darkred' },
                 ]}
                 style={{ height: '333px' }}
                 lineWidth={66}
@@ -36,18 +50,18 @@ class DashboardStats extends Component {
                     fontWeight: 'bold'
                 }}
             />
+
+            //set up stats
             stats = (
                 <div className="statsContainer">
-                    {/* calculate percent of friends on time */}
-                    <h4>{Math.ceil(100 * (this.props.redux.friend.length - this.props.redux.overdue.length) / this.props.redux.friend.length)}% on time ... way to go!</h4>
-                    <p>up to date: {this.props.redux.friend.length - (this.props.redux.dueNow.length + this.props.redux.overdue.length)}</p>
-                    <p>due today: {this.props.redux.dueNow.length}</p>
-                    <p>overdue: {this.props.redux.overdue.length}</p>
+                    <h4>{upToDatePct}% on time ... {successMessage}</h4>
+                    <p>up to date: {upToDate}</p>
+                    <p>due today: {dueToday}</p>
+                    <p>overdue: {overDue}</p>
                 </div>
             );
-        }
 
-
+        } //end conditionals
 
         return (
             <div>
