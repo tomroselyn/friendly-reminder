@@ -7,25 +7,25 @@ import swal from 'sweetalert';
 
 class SmsButton extends Component {
 
-    handleSms = (friendToText) => {
+    handleSms = (friend) => {
         //sweet alert requiring confirmation
         swal({
-            title: `did you text ${friendToText.first_name}?`,
-            text: `send sms to: ${friendToText.sms || '(no number listed)'}`,
+            title: `did you text ${friend.first_name}?`,
+            text: `send sms to: ${friend.sms || '(no number listed)'}`,
             icon: "warning",
             buttons: ["oops, no I didn't", "yep, text sent!"]
         })
             .then((willConfirm) => {
                 if (willConfirm) {
                     swal("contact complete!", "", "success");
-                    this.props.dispatch({ type: 'MARK_CONTACTED', payload: friendToText, contact_type: 'sms' });
+                    this.props.dispatch({ type: 'MARK_CONTACTED', payload: friend, contact_type: 'sms' });
                 }
             });
     }
 
     render() {
         return (
-            <IconButton onClick={() => this.handleSms(this.props.friendToText)}>
+            <IconButton onClick={() => this.handleSms(this.props.friend)}>
                 <Sms />
             </IconButton>
         )

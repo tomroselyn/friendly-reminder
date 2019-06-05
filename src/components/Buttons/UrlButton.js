@@ -7,27 +7,27 @@ import swal from 'sweetalert';
 
 class UrlButton extends Component {
 
-    handleUrl = (friendToContact) => {
+    handleUrl = (friend) => {
         //go to link
-        window.open(friendToContact.url);
+        window.open(friend.url);
         //sweet alert requiring confirmation
         swal({
-            title: `did you contact ${friendToContact.first_name}?`,
-            text: `visit: ${friendToContact.url || '(no website listed)'}`,
+            title: `did you contact ${friend.first_name}?`,
+            text: `visit: ${friend.url || '(no website listed)'}`,
             icon: "warning",
             buttons: ["oops, no I didn't", "yep, made contact!"]
         })
             .then((willConfirm) => {
                 if (willConfirm) {
                     swal("contact complete!", "", "success");
-                    this.props.dispatch({ type: 'MARK_CONTACTED', payload: friendToContact, contact_type: 'url' });
+                    this.props.dispatch({ type: 'MARK_CONTACTED', payload: friend, contact_type: 'url' });
                 }
             });
     }
 
     render() {
         return (
-            <IconButton onClick={() => this.handleUrl(this.props.friendToContact)}>
+            <IconButton onClick={() => this.handleUrl(this.props.friend)}>
                 <Bookmark />
             </IconButton>
         )

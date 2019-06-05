@@ -7,15 +7,15 @@ import swal from 'sweetalert';
 
 class ExtraDayButton extends Component {
 
-    handleExtraDay = (friendToDelay) => {
+    handleExtraDay = (friend) => {
         console.log('adding extra day to due date');
-        this.props.dispatch({ type: 'EXTRA_DAY', payload: friendToDelay.id });
+        this.props.dispatch({ type: 'EXTRA_DAY', payload: friend.id });
         swal("due date extended!", "", "success");
     }
 
     render() {
         return (
-            <IconButton onClick={() => this.handleExtraDay(this.props.friendToDelay)}>
+            <IconButton onClick={() => this.handleExtraDay(this.props.friend)}>
                 <AddAlert />
             </IconButton>
         )

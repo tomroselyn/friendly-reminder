@@ -14,20 +14,20 @@ class DashboardCard extends Component {
                 <Card className={`${this.props.due}Card`}>
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
-                            {this.props.info.first_name} {this.props.info.last_name}
+                            {this.props.friend.first_name} {this.props.friend.last_name}
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            last contacted <br />{this.props.info.last_date.substr(0,10)}
+                            last contacted <br />{this.props.friend.last_date.substr(0,10)}
                         </Typography>
                         <Typography color="textSecondary">
-                            via {this.props.info.last_type}
+                            via {this.props.friend.last_type}
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <EmailButton friendToEmail={this.props.info} />
-                        <SmsButton friendToText={this.props.info} />
-                        <UrlButton friendToContact={this.props.info} />
-                        <ExtraDayButton friendToDelay={this.props.info} />
+                        <EmailButton friend={this.props.friend} />
+                        <SmsButton friend={this.props.friend} />
+                        <UrlButton friend={this.props.friend} />
+                        <ExtraDayButton friend={this.props.friend} />
                     </CardActions>
                 </Card>
             </Grid>

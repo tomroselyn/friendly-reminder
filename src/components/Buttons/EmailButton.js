@@ -6,14 +6,14 @@ import {withRouter} from 'react-router-dom';
 
 class EmailButton extends Component {
 
-    handleEmail = (friendToEmail) => {
-        this.props.dispatch({ type: 'SET_EDIT_FRIEND', payload: friendToEmail });
+    handleEmail = (friend) => {
+        this.props.dispatch({ type: 'SET_EDIT_FRIEND', payload: friend });
         this.props.history.push('/send-email');
     }
 
     render() {
         return (
-            <IconButton onClick={() => this.handleEmail(this.props.friendToEmail)}>
+            <IconButton onClick={() => this.handleEmail(this.props.friend)}>
                 <Email />
             </IconButton>
         )
