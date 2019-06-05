@@ -37,7 +37,10 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     const friend = req.body
     //calculate due date
     const dueDate = new Date(friend.last_date);
-    // console.log('due date initial state:', dueDate);
+    dueDate.setHours(0)
+    dueDate.setMinutes(0)
+    dueDate.setSeconds(0)
+    dueDate.setMilliseconds(0);
     dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
     // console.log('due date after calculation:', dueDate);
 
@@ -85,7 +88,10 @@ router.put('/:id', rejectUnauthenticated, async (req, res) => {
     const friend = req.body
     //calculate due date
     const dueDate = new Date(friend.last_date);
-    // console.log('due date initial state:', dueDate);
+    dueDate.setHours(0)
+    dueDate.setMinutes(0)
+    dueDate.setSeconds(0)
+    dueDate.setMilliseconds(0);
     dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
     // console.log('due date after calculation:', dueDate);
 
@@ -144,7 +150,11 @@ router.put('/contact/:id', rejectUnauthenticated, (req, res) => {
     const friend = req.body.friend;
     const contactType = req.body.contact_type;
     const dueDate = new Date();
-    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
+    dueDate.setHours(0)
+    dueDate.setMinutes(0)
+    dueDate.setSeconds(0)
+    dueDate.setMilliseconds(0);
+    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency));
     // console.log('due date after calculation:', dueDate);
 
     const markContactedQuery = `UPDATE "timing" SET "last_type" = $1, "last_date" = current_date, "due_date" = $2 WHERE "friend_id" = $3;`;
