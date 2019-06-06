@@ -44,7 +44,7 @@ class LoginPage extends Component {
           </h2>
         )}
 
-          {/* log in form */}
+        {/* log in form */}
         <form onSubmit={this.login}>
           <h1>log in</h1>
 

@@ -29,9 +29,9 @@ class AllFriends extends Component {
                 <TableCell>{friend.frequency}</TableCell>
                 <TableCell>
                     <ExtraDayButton friend={friend} />
-                    <EmailButton friend={friend} />
-                    <SmsButton friend={friend} />
-                    <UrlButton friend={friend} />
+                    {friend.email && <EmailButton friend={friend} />}
+                    {friend.sms && <SmsButton friend={friend} />}
+                    {friend.url && <UrlButton friend={friend} />}
                     <EditButton friend={friend} />
                     <DeleteButton friend={friend} />
                 </TableCell>

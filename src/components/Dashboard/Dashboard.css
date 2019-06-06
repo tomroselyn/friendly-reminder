@@ -10,12 +10,31 @@
     padding: 50px;
 }
 
-.nowCard {
-    background-color: darkorange !important;
-    color: white !important;
+.dashboardCard {
+    background-color: antiquewhite !important;
 }
 
-.overCard {
-    background-color: darkred !important;
-    color: white !important;
+.nowBox, .overBox {
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.nowBox {
+    background-color: darkorange;
+}
+
+.overBox {
+    background-color: darkred;
+}
+
+.cardIcon {
+    min-width: 100px !important;
+    min-height: 100px !important;
+}
+
+.cardActions {
+    text-align: center !important;
+    align-items: center;
 }
