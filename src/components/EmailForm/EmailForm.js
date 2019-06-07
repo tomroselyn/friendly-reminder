@@ -44,7 +44,7 @@ class EmailForm extends Component {
         // console.log('current friend:', this.state.friend);
 
         return (
-            <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
+            <form id="emailForm" onSubmit={this.handleSubmit}>
                 <div>
                     <h3>send an email</h3>
                 </div>
@@ -56,6 +56,7 @@ class EmailForm extends Component {
                     <Grid item xs={12}>
                         <TextField
                             className="textField"
+                            autoFocus
                             value={this.state.subject}
                             type="text"
                             label="subject line"

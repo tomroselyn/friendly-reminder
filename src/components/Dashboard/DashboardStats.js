@@ -39,8 +39,7 @@ class DashboardStats extends Component {
                     { title: 'overdue', value: overDue, color: '#8e0000' },
                 ]}
                 style={{ height: '380px' }}
-                lineWidth={66}
-                paddingAngle={15}
+                lineWidth={100}
                 animate
                 animationDuration={5000}
                 startAngle={22}
