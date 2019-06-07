@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 //email transporter
 const nodemailer = require('nodemailer');
@@ -26,7 +27,7 @@ transporter.verify((error, success) => {
 });
 
 //POST route to send email
-router.post('/send', (req, res) => {
+router.post('/send', rejectUnauthenticated, (req, res) => {
     const name = `${req.user.first_name} ${req.user.last_name}`;
     const sendEmail = req.user.username;
     const message = req.body.message
