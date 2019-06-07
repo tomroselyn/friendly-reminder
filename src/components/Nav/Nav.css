@@ -28,6 +28,8 @@
     color: black;
     text-decoration: none;
     padding: 25px;
+    position: relative;
+    right: 25px;
 }
 
 .nav-title:hover {
