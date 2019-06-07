@@ -48,15 +48,15 @@ class AddEditFriend extends Component {
     setDummyData = (event) => {
         event.preventDefault();
         this.setState({
-            first_name: 'Thomas',
-            last_name: 'Roselyn',
-            email: 'tgroselyn@gmail.com',
-            sms: '4257618920',
-            url: 'http://www.linkedin.com/in/tgroselyn',
-            pref: 'email',
-            frequency: '3',
+            first_name: 'Sunne',
+            last_name: 'Grady',
+            email: 'grady4396@gmail.com',
+            sms: '5551112345 ',
+            url: 'https://www.facebook.com/sunne.grady',
+            pref: 'url',
+            frequency: '7',
             last_type: 'sms',
-            last_date: new Date().toISOString()
+            last_date: '2019-05-31'
         })
     }
 
