@@ -45,6 +45,21 @@ class AddEditFriend extends Component {
         this.props.history.push('/all-friends');
     } //end handleSubmit
 
+    setDummyData = (event) => {
+        event.preventDefault();
+        this.setState({
+            first_name: 'Thomas',
+            last_name: 'Roselyn',
+            email: 'tgroselyn@gmail.com',
+            sms: '4257618920',
+            url: 'http://www.linkedin.com/in/tgroselyn',
+            pref: 'email',
+            frequency: '3',
+            last_type: 'sms',
+            last_date: new Date().toISOString()
+        })
+    }
+
     render() {
 
         //if there's a friend in the editFriend reducer, render button as 'update friend'
@@ -57,143 +72,146 @@ class AddEditFriend extends Component {
         }
 
         return (
-            <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
-                    <h2>add / edit friend</h2>
-                <Grid container id="nameInputs" spacing={2}>
-                    <Grid item xs={12}>
-                        <h4>What is your friend's name?</h4>
+            <div className="formContainer">
+                <button type="button" className="dummy" onClick={this.setDummyData}></button>
+                <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
+                        <h2>add / edit friend</h2>
+                    <Grid container id="nameInputs" spacing={2}>
+                        <Grid item xs={12}>
+                            <h4>What is your friend's name?</h4>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required
+                                autoFocus
+                                className="textField"
+                                value={this.state.first_name}
+                                type="text"
+                                label="first name"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('first_name')} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required
+                                className="textField"
+                                value={this.state.last_name}
+                                type="text"
+                                label="last name"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('last_name')} />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required
-                            autoFocus
-                            className="textField"
-                            value={this.state.first_name}
-                            type="text"
-                            label="first name"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('first_name')} />
+                    <Grid container id="addressInputs" spacing={2}>
+                        <Grid item xs={12}>
+                            <h4>How will you contact them?</h4>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required={this.state.pref === 'email'}
+                                className="textField"
+                                value={this.state.email}
+                                type="text"
+                                label="email address"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('email')} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required={this.state.pref === 'sms'}
+                                className="textField"
+                                value={this.state.sms}
+                                type="text"
+                                label="sms number"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('sms')} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required={this.state.pref === 'url'}
+                                className="textField"
+                                value={this.state.url}
+                                type="text"
+                                label="website"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('url')} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required
+                                select
+                                className="textField"
+                                value={this.state.pref}
+                                label="preferred contact method"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('pref')} >
+                                <MenuItem value="email">email</MenuItem>
+                                <MenuItem value="sms">sms</MenuItem>
+                                <MenuItem value="url">website</MenuItem>
+                            </TextField>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required
-                            className="textField"
-                            value={this.state.last_name}
-                            type="text"
-                            label="last name"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('last_name')} />
+                    <Grid container id="timingInputs" spacing={2}>
+                        <Grid item xs={12}>
+                            <h4>When and how did you last contact them?</h4>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required
+                                className="textField"
+                                value={this.state.last_date.substr(0, 10)}
+                                type="date"
+                                label="last date of contact"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('last_date')} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required
+                                select
+                                className="textField"
+                                value={this.state.last_type}
+                                label="last contact method"
+                                variant="outlined"
+                                margin="normal"
+                                onChange={this.handleInputChangeFor('last_type')} >
+                                <MenuItem value="email">email</MenuItem>
+                                <MenuItem value="sms">sms</MenuItem>
+                                <MenuItem value="url">website</MenuItem>
+                            </TextField>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <h4>How often would you like to contact them?</h4>
+                        </Grid>
+                        <Grid item xs={3}></Grid>
+                        <Grid item xs={6}>
+                            <TextField
+                                required
+                                className="textField"
+                                value={this.state.frequency}
+                                type="number"
+                                label="frequency"
+                                variant="outlined"
+                                margin="normal"
+                                InputProps={{
+                                    endAdornment: <InputAdornment position="end">days</InputAdornment>,
+                                }}
+                                onChange={this.handleInputChangeFor('frequency')} />
+                        </Grid>
+                        <Grid item xs={3}></Grid>
                     </Grid>
-                </Grid>
-                <Grid container id="addressInputs" spacing={2}>
-                    <Grid item xs={12}>
-                        <h4>How will you contact them?</h4>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required={this.state.pref === 'email'}
-                            className="textField"
-                            value={this.state.email}
-                            type="text"
-                            label="email address"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('email')} />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required={this.state.pref === 'sms'}
-                            className="textField"
-                            value={this.state.sms}
-                            type="text"
-                            label="sms number"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('sms')} />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required={this.state.pref === 'url'}
-                            className="textField"
-                            value={this.state.url}
-                            type="text"
-                            label="website"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('url')} />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required
-                            select
-                            className="textField"
-                            value={this.state.pref}
-                            label="preferred contact method"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('pref')} >
-                            <MenuItem value="email">email</MenuItem>
-                            <MenuItem value="sms">sms</MenuItem>
-                            <MenuItem value="url">website</MenuItem>
-                        </TextField>
-                    </Grid>
-                </Grid>
-                <Grid container id="timingInputs" spacing={2}>
-                    <Grid item xs={12}>
-                        <h4>When and how did you last contact them?</h4>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required
-                            className="textField"
-                            value={this.state.last_date.substr(0, 10)}
-                            type="date"
-                            label="last date of contact"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('last_date')} />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required
-                            select
-                            className="textField"
-                            value={this.state.last_type}
-                            label="last contact method"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={this.handleInputChangeFor('last_type')} >
-                            <MenuItem value="email">email</MenuItem>
-                            <MenuItem value="sms">sms</MenuItem>
-                            <MenuItem value="url">website</MenuItem>
-                        </TextField>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <h4>How often would you like to contact them?</h4>
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                    <Grid item xs={6}>
-                        <TextField
-                            required
-                            className="textField"
-                            value={this.state.frequency}
-                            type="number"
-                            label="frequency"
-                            variant="outlined"
-                            margin="normal"
-                            InputProps={{
-                                endAdornment: <InputAdornment position="end">days</InputAdornment>,
-                            }}
-                            onChange={this.handleInputChangeFor('frequency')} />
-                    </Grid>
-                    <Grid item xs={3}></Grid>
-                </Grid>
-                <div id="buttonArea">
-                    {submitButton}
-                </div>
-            </form>
+                    <div id="buttonArea">
+                        {submitButton}
+                    </div>
+                </form>
+            </div>
         )
     } //end render
 }
