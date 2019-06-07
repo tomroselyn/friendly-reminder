@@ -20,13 +20,15 @@ class DashboardCardList extends Component {
         return (
             <div>
                 <h2 className="card-header">due today</h2>
-                <Grid container spacing={4} className="cardContainer">
+                <h4 className="dashboard-message">these friends are scheduled for contact today</h4>
+                {this.props.redux.dueNow.length ? <Grid container spacing={4} className="cardContainer">
                     {dueNow}
-                </Grid>
+                </Grid> : <p>(...nobody here!)</p>}
                 <h2 className="card-header">overdue</h2>
-                <Grid container spacing={4} className="cardContainer">
+                <h4 className="dashboard-message">uh oh! these friends are overdue for contact ... better take action</h4>
+                {this.props.redux.overdue.length ? <Grid container spacing={4} className="cardContainer">
                     {overdue}
-                </Grid>
+                </Grid> : <p>(...nobody here!)</p>}
             </div>
         )
     }

@@ -11,6 +11,10 @@ class EmailForm extends Component {
         friend: this.props.redux.editFriend || {}
     } //end state
 
+    componentWillUnmount = () => {
+        this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
+    }
+
     handleInputChangeFor = propertyName => event => {
         this.setState({
             [propertyName]: event.target.value,

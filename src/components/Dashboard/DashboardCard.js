@@ -14,20 +14,19 @@ class DashboardCard extends Component {
             <Grid item xs={3}>
                 <Card className="dashboardCard">
                     <CardContent>
-                        <div>
-                            {this.props.friend.first_name} {this.props.friend.last_name}
-                        </div>
+                        <h4>{this.props.friend.first_name} {this.props.friend.last_name}</h4>
                         <div className={`${this.props.due}Box`}>
                             {this.props.due === 'now' && <AccessTime className="cardIcon" />}
                             {this.props.due === 'over' && <Warning className="cardIcon" />}
-                            <br />due {this.props.friend.due_date.substr(0, 10)}
+                            <br />due<br /><span className="card-date">{this.props.friend.due_date.substr(0, 10)}</span>
                         </div>
                         <div>
-                            last contacted <br />{this.props.friend.last_date.substr(0,10)}
+                            last contacted <br />
+                            <span className="card-date">{this.props.friend.last_date.substr(0, 10)}</span>
                             <br />via {this.props.friend.last_type}
                         </div>
                     </CardContent>
-                    <CardActions className="cardActions">
+                    <CardActions className="cardActions" alignItems="center">
                         {this.props.friend.pref === 'email' && <EmailButton friend={this.props.friend} />}
                         {this.props.friend.pref === 'sms' && <SmsButton friend={this.props.friend} />}
                         {this.props.friend.pref === 'url' && <UrlButton friend={this.props.friend} />}

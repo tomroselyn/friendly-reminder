@@ -12,6 +12,11 @@ const useStyles = makeStyles({
   }
 });
 
+const handleAddFriend = (props) => {
+  props.dispatch({type: 'CLEAR_EDIT_FRIEND'});
+  props.history.push('/add-edit-friend');
+}
+
 const NavMenu = (props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -47,7 +52,7 @@ const NavMenu = (props) => {
               <ListItemIcon><People /></ListItemIcon>
               <ListItemText primary="all friends" />
             </ListItem>
-            <ListItem button onClick={() => props.history.push('/add-edit-friend')}>
+            <ListItem button onClick={() => handleAddFriend(props)}>
               <ListItemIcon><PersonAdd /></ListItemIcon>
               <ListItemText primary="add new friend" />
             </ListItem>

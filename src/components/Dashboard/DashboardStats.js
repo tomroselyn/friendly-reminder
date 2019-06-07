@@ -116,11 +116,7 @@ class DashboardStats extends Component {
 
             //set up success message
             intro = (
-                <Grid container className="successContainer" spacing={2}>
-                    <Grid item xs={12}>
-                        <h4 id="success-message">{upToDatePct}% of contacts made on time or due today ...  {successMessage}</h4>
-                    </Grid>
-                </Grid>
+                <h4 className="dashboard-message">{upToDatePct}% of contacts made on time or due today ...  {successMessage}</h4>
             );
 
         } //end conditionals
@@ -128,8 +124,9 @@ class DashboardStats extends Component {
         return (
             <div>
                 <h2>overview</h2>
+                {intro}
                 <Grid container spacing={2}>
-                    <Grid item xs={12}>{intro}</Grid>
+                    <Grid item xs={12}></Grid>
                     <Grid item xs={2}></Grid>
                     <Grid item xs={3}>{bigPieChart}</Grid>
                     <Grid item xs={1}></Grid>

@@ -19,6 +19,10 @@ class AddEditFriend extends Component {
         last_date: this.props.redux.editFriend.last_date || new Date().toISOString()
     } //end state
 
+    componentWillUnmount = () => {
+        this.props.dispatch({type: 'CLEAR_EDIT_FRIEND'});
+    }
+
     handleInputChangeFor = propertyName => event => {
         this.setState({
             [propertyName]: event.target.value,
@@ -54,9 +58,7 @@ class AddEditFriend extends Component {
 
         return (
             <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
-                <div>
-                    <h3>add / edit friend</h3>
-                </div>
+                    <h2>add / edit friend</h2>
                 <Grid container id="nameInputs" spacing={2}>
                     <Grid item xs={12}>
                         <h4>What is your friend's name?</h4>
@@ -171,6 +173,7 @@ class AddEditFriend extends Component {
                     <Grid item xs={12}>
                         <h4>How often would you like to contact them?</h4>
                     </Grid>
+                    <Grid item xs={3}></Grid>
                     <Grid item xs={6}>
                         <TextField
                             required
@@ -185,6 +188,7 @@ class AddEditFriend extends Component {
                             }}
                             onChange={this.handleInputChangeFor('frequency')} />
                     </Grid>
+                    <Grid item xs={3}></Grid>
                 </Grid>
                 <div id="buttonArea">
                     {submitButton}

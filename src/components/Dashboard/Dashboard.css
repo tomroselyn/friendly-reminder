@@ -37,12 +37,14 @@
 
 .cardActions {
     text-align: center !important;
-    align-items: center;
+    align-items: center !important;
+    margin: 0px auto !important;
+    padding: 0 100px 10px 100px !important;
 }
 
-#success-message {
-    margin: 0;
-    font-size: 20px;
+.dashboard-message {
+    margin: 25px 0 0 0;
+    font-size: 18px;
     font-style: italic;
     font-weight: 500;
 }
@@ -53,4 +55,8 @@
 
 .card-header {
     margin: 50px 0 0 0;
+}
+
+.card-date {
+    font-weight: bold;
 }
