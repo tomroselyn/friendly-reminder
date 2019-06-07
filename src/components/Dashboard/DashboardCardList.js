@@ -19,11 +19,11 @@ class DashboardCardList extends Component {
 
         return (
             <div>
-                <h2>due today</h2>
+                <h2 className="card-header">due today</h2>
                 <Grid container spacing={4} className="cardContainer">
                     {dueNow}
                 </Grid>
-                <h2>overdue</h2>
+                <h2 className="card-header">overdue</h2>
                 <Grid container spacing={4} className="cardContainer">
                     {overdue}
                 </Grid>

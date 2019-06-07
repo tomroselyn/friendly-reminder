@@ -40,6 +40,7 @@ class AllFriends extends Component {
 
         return (
             <div id="allFriendsContainer">
+                <h2>all friends</h2>
                 <Table className="allFriendsTable">
                     <TableHead>
                         <TableRow>

@@ -93,7 +93,7 @@ class RegisterPage extends Component {
             margin="normal"
             onChange={this.handleInputChangeFor('password')} />
 
-          <Button className="register form-button" type="submit" variant="contained" color="primary">
+          <Button className="form-button" type="submit" variant="contained" color="primary">
             register
           </Button>
 

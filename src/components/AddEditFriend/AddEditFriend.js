@@ -47,9 +47,9 @@ class AddEditFriend extends Component {
         let submitButton;
 
         if (this.props.redux.editFriend.id) {
-            submitButton = <Button type="submit" variant="contained" color="primary">update friend</Button>
+            submitButton = <Button className="form-button" type="submit" variant="contained" color="primary">update friend</Button>
         } else {
-            submitButton = <Button type="submit" variant="contained" color="primary">add friend</Button>
+            submitButton = <Button className="form-button" type="submit" variant="contained" color="primary">add friend</Button>
         }
 
         return (

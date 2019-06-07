@@ -3,7 +3,8 @@
 }
 
 .statsContainer {
-    text-align: left;
+    text-align: center;
+    padding-top: 50px;
 }
 
 .cardContainer {
@@ -11,7 +12,7 @@
 }
 
 .dashboardCard {
-    background-color: antiquewhite !important;
+    background-color: #eeeeee !important;
 }
 
 .nowBox, .overBox {
@@ -22,11 +23,11 @@
 }
 
 .nowBox {
-    background-color: darkorange;
+    background-color: #0277bd;
 }
 
 .overBox {
-    background-color: darkred;
+    background-color: #8e0000;
 }
 
 .cardIcon {
@@ -37,4 +38,19 @@
 .cardActions {
     text-align: center !important;
     align-items: center;
+}
+
+#success-message {
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.pie-label {
+    margin-bottom: 10px;
+}
+
+.card-header {
+    margin: 50px 0 0 0;
 }
