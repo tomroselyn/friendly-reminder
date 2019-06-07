@@ -72,7 +72,7 @@ class EmailForm extends Component {
                     </Grid>
                 </Grid>
                 <div id="buttonArea">
-                    <Button type="submit" variant="contained" color="primary">send</Button>
+                    <Button className="form-button" type="submit" variant="contained" color="primary">send</Button>
                 </div>
             </form>
         )

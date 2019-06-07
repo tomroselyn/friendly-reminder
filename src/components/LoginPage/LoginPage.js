@@ -69,7 +69,7 @@ class LoginPage extends Component {
             margin="normal"
             onChange={this.handleInputChangeFor('password')} />
 
-          <Button type="submit" variant="contained" color="primary">
+          <Button className="form-button" type="submit" variant="contained" color="primary">
             log in
           </Button>
 

@@ -9,7 +9,9 @@
 
 .nav-menu-button {
   float: left;
-  margin: 30px !important;
+  position: absolute;
+  top: 45px;
+  left: 30px;
   padding: 20px !important;
 }
 
