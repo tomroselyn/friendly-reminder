@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IconButton } from '@material-ui/core';
+import { Tooltip, IconButton } from '@material-ui/core';
 import { Email } from '@material-ui/icons';
 import {withRouter} from 'react-router-dom';
 
@@ -13,9 +13,11 @@ class EmailButton extends Component {
 
     render() {
         return (
-            <IconButton onClick={() => this.handleEmail(this.props.friend)}>
-                <Email />
-            </IconButton>
+            <Tooltip title="send email">
+                <IconButton onClick={() => this.handleEmail(this.props.friend)}>
+                    <Email />
+                </IconButton>
+            </Tooltip>
         )
     }
 }

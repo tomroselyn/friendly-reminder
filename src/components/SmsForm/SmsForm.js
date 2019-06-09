@@ -38,6 +38,13 @@ class SmsForm extends Component {
             });
     } //end handleSubmit
 
+    setDummyData = (event) => {
+        event.preventDefault();
+        this.setState({
+            message: 'hello world'
+        })
+    }
+
     render() {
 
         // console.log('current friend:', this.state.friend);
@@ -45,7 +52,7 @@ class SmsForm extends Component {
         return (
             <form id="smsForm" onSubmit={this.handleSubmit}>
                 <div>
-                    <h3>send a text message</h3>
+                    <h2 onClick={this.setDummyData}>send a text message</h2>
                 </div>
                 <Grid container id="addressInfo" spacing={2}>
                     <Grid item xs={12}>

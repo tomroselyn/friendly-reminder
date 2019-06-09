@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IconButton } from '@material-ui/core';
+import { Tooltip, IconButton } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -27,9 +27,11 @@ class DeleteButton extends Component {
 
     render() {
         return (
-            <IconButton onClick={() => this.handleDelete(this.props.friend)}>
-                <Delete />
-            </IconButton>
+            <Tooltip title="delete">
+                <IconButton onClick={() => this.handleDelete(this.props.friend)}>
+                    <Delete />
+                </IconButton>
+            </Tooltip>
         )
     }
 }

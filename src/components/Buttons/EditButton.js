@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IconButton } from '@material-ui/core';
+import { Tooltip, IconButton } from '@material-ui/core';
 import { Edit } from '@material-ui/icons';
 import { withRouter } from 'react-router-dom';
 
@@ -13,9 +13,11 @@ class EditButton extends Component {
 
     render() {
         return (
-            <IconButton onClick={() => this.handleEdit(this.props.friend)}>
-                <Edit />
-            </IconButton>
+            <Tooltip title="edit">
+                <IconButton onClick={() => this.handleEdit(this.props.friend)}>
+                    <Edit />
+                </IconButton>
+            </Tooltip>
         )
     }
 }

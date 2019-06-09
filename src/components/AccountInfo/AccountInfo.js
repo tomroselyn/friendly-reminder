@@ -1,26 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 
-// this could also be written with destructuring parameters as:
-// const UserPage = ({ user }) => (
-// and then instead of `props.user.username` you could use `user.username`
 const AccountInfo = (props) => (
-    <div>
-        <h1 id="welcome">
-            Welcome, {props.user.username}!
-    </h1>
-        <p>Your ID is: {props.user.id}</p>
-        <LogOutButton className="log-in" />
+    <div id="account-page">
+        <h2>account info</h2>
+        <p>Welcome, {props.user.first_name} {props.user.last_name}!</p>
+        <p>Your email address is: {props.user.username}</p>
+        <p>Your user ID is: {props.user.id}</p>
     </div>
 );
 
-// Instead of taking everything from state, we just want the user info.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({user}) => ({ user });
+//user info
 const mapStateToProps = state => ({
     user: state.user,
 });
 
-// this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(AccountInfo);
