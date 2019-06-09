@@ -46,7 +46,7 @@ class LoginPage extends Component {
 
         {/* log in form */}
         <form onSubmit={this.login}>
-          <h1>log in</h1>
+          <h2>log in</h2>
 
           <TextField
             required

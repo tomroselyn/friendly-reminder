@@ -50,7 +50,7 @@ class RegisterPage extends Component {
 
         {/* registration form */}
         <form onSubmit={this.registerUser}>
-          <h1>register</h1>
+          <h2>register</h2>
 
           <TextField
             required

@@ -73,9 +73,8 @@ class AddEditFriend extends Component {
 
         return (
             <div className="formContainer">
-                <button type="button" className="dummy" onClick={this.setDummyData}></button>
                 <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
-                        <h2>add / edit friend</h2>
+                    <h2 onClick={this.setDummyData}>add / edit friend</h2>
                     <Grid container id="nameInputs" spacing={2}>
                         <Grid item xs={12}>
                             <h4>What is your friend's name?</h4>
