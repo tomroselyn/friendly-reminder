@@ -39,7 +39,7 @@ Steps to get the development environment running.
 
 ## Screen Shot
 
-![screenshot of dashboard](images/friendly-reminder-screenshot.png)
+![screenshot of dashboard](public/images/friendly-reminder-screenshot.png)
 
 ## Documentation
 
