@@ -1,115 +1,73 @@
-# Prime Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+# Friendly Reminder
 
-## Download (Don't Clone) This Repository
+Friendly Reminder is a web application designed to make it easy to keep up with friends on a regular basis.
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+For many of us, there are simply too many people in our lives to keep up with, and too often the ones we care about most slip through the cracks. Moreover, many of my contacts are really only available through specific channels. Certain people I contact only through email, or only through text messaging, or only through a social media network like Facebook or LinkedIn.
 
-## Prerequisites
+I built Friendly Reminder to solve these problems. After creating an account, I am able to set up each contact with multiple contact addresses, including a preferred contact method. I will also set a frequency for each, or how many days should pass before I'm reminded again to get in touch.
 
-Before you get started, make sure you have the following software installed on your computer:
+## Built With
+
+Friendly Reminder was built with React, Redux Sagas, Node, Express, and PostgreSQL. It also uses Material-UI for styling, Sweet Alerts for pop-up alerts, and Nodemailer and Twilio for sending emails and SMS messages from the app.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- [PostgresQL](https://www.postgresql.org/)
+- [Postico](https://eggerapps.at/postico/)
 
-## Create database and table
+### Installing
 
-Create a new database called `prime_app` and create a `user` table:
+Steps to get the development environment running.
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+1. Download this project.
+2. Set up a local PostgreSQL database called `prime_app`
+3. Use the data.sql instructions to create a table in your database
+4. Set up a local .env file with the following fields, replacing values with your own:
+    a. SERVER_SESSION_SECRET=(32-character string including symbols)
+    b. email_user=(gmail account to send messages from)
+    c. email_pass=(gmail account password)
+    d. sms_accountSid=(twilio account sid)
+    e. sms_authToken=(twilio auth token)
+5. In the terminal, `npm install` in the project folder
+6. In the terminal, `npm run server` and `npm run client`
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+## Screen Shot
 
-## Development Setup Instructions
+![screenshot of dashboard](images/public/friendly-reminder-screenshot.png)
 
-* Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
-    ```
-    SERVER_SESSION_SECRET=superDuperSecret
-    ```
-    While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run server`
-* Run `npm run client`
-* Navigate to `localhost:3000`
+## Documentation
 
-## Debugging
+### Completed Features
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+App allows users to
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+- [x] Create an account and sign in
+- [x] Add friends with specific contact method and frequency preferences
+- [x] See friends due today and overdue from the dashboard view
+- [x] Use a friend's preferred contact method or delay their due date directly from the dashboard
+- [x] From the All Friends view, use any contact method, edit or delete a friend
+- [x] Send emails and text messages directly from within the app
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+### Next Steps
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+- [ ] Allow account editing and deletion
+- [ ] Build a more advanced table, with sorting options, in the All Friends view
+- [ ] Reformat outgoing email and text messages for ease of understanding
+- [ ] Improve user registration - validate information
+- [ ] Port to mobile-first web app or platform-native app
+- [ ] Use Material-UI theme for consistency and ease of updating
+- [ ] Deploy to Heroku
 
+## Authors
 
-## Testing Routes with Postman
+* Thomas Roselyn
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum. 
+## Acknowledgments
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
-
-1. Start the server - `npm run server`
-2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Passport. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-    1. `POST /api/user/register` registers a new user, see body to change username/password
-    2. `POST /api/user/login` will login a user, see body to change username/password
-    3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
-
-
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
-
-## Lay of the Land
-
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-* src/components
-  * App/App
-  * Footer/Footer
-  * Nav/Nav
-  * AboutPage/AboutPage
-  * InfoPage/InfoPage
-  * UserPage/UserPage
-  * LoginPage/LoginPage
-  * RegisterPage/RegisterPage
-  * LogOutButton/LogOutButton
-  * ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+* Prime Digital Academy
