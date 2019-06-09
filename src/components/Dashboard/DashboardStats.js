@@ -42,7 +42,7 @@ class DashboardStats extends Component {
                 lineWidth={100}
                 animate
                 animationDuration={5000}
-                startAngle={22}
+                startAngle={0}
             />
 
             //set up pie chart for up to date contacts
@@ -54,7 +54,7 @@ class DashboardStats extends Component {
                 lineWidth={33}
                 animate
                 animationDuration={4000}
-                startAngle={44}
+                startAngle={90}
                 label
                 labelPosition={0}
                 labelStyle={{
@@ -72,7 +72,7 @@ class DashboardStats extends Component {
                 lineWidth={33}
                 animate
                 animationDuration={3000}
-                startAngle={44}
+                startAngle={180}
                 label
                 labelPosition={0}
                 labelStyle={{
@@ -91,7 +91,7 @@ class DashboardStats extends Component {
                 lineWidth={33}
                 animate
                 animationDuration={2000}
-                startAngle={44}
+                startAngle={270}
                 label
                 labelPosition={0}
                 labelStyle={{
@@ -115,7 +115,7 @@ class DashboardStats extends Component {
 
             //set up success message
             intro = (
-                <h4 className="dashboard-message">{upToDatePct}% of contacts made on time or due today ...  {successMessage}</h4>
+                <p className="dashboardMessage">{upToDatePct}% of contacts made on time or due today ...  {successMessage}</p>
             );
 
         } //end conditionals

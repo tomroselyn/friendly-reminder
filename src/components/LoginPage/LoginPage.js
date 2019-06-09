@@ -30,6 +30,14 @@ class LoginPage extends Component {
     });
   }
 
+  setDummyLogin = event => {
+    event.preventDefault();
+    this.setState({
+      username: 'tgroselyn@gmail.com',
+      password: '1234'
+    });
+  }
+
   render() {
     return (
       <div>
@@ -45,8 +53,9 @@ class LoginPage extends Component {
         )}
 
         {/* log in form */}
-        <form onSubmit={this.login}>
-          <h2>log in</h2>
+        <form id="loginForm" onSubmit={this.login}>
+          
+          <h2 onClick={this.setDummyLogin}>log in</h2>
 
           <TextField
             required

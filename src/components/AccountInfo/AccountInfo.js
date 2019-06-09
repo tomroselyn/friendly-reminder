@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const AccountInfo = (props) => (
     <div id="account-page">
         <h2>account info</h2>
-        <p>Welcome, {props.user.first_name} {props.user.last_name}!</p>
+        <p>Hello, {props.user.first_name} {props.user.last_name}!</p>
         <p>Your email address is: {props.user.username}</p>
         <p>Your user ID is: {props.user.id}</p>
     </div>

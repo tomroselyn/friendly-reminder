@@ -34,7 +34,7 @@ class EmailForm extends Component {
             .then((willConfirm) => {
                 if (willConfirm) {
                     this.props.dispatch({type: 'SEND_EMAIL', payload: this.state});
-                    this.props.history.push('all-friends');
+                    this.props.history.push('dashboard');
                 }
             });
     } //end handleSubmit

@@ -49,7 +49,7 @@ class RegisterPage extends Component {
         )}
 
         {/* registration form */}
-        <form onSubmit={this.registerUser}>
+        <form id="registerForm" onSubmit={this.registerUser}>
           <h2>register</h2>
 
           <TextField

@@ -3,7 +3,7 @@
   box-sizing: border-box;
   max-width: 100%;
   overflow: hidden;
-  background-color: #ffb74d;
+  background-color: #ffcc80;
   width: 100%;
 }
 
@@ -18,7 +18,6 @@
 .nav-menu-icon {
   min-width: 30px;
   min-height: 30px;
-  color: #1976d2 !important;
 }
 
 .nav-title {

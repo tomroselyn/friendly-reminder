@@ -28,10 +28,10 @@ class AllFriends extends Component {
                 <TableCell>{friend.due_date.substr(0, 10)}</TableCell>
                 <TableCell>{friend.frequency}</TableCell>
                 <TableCell>
-                    <ExtraDayButton friend={friend} />
                     {friend.email && <EmailButton friend={friend} />}
                     {friend.sms && <SmsButton friend={friend} />}
                     {friend.url && <UrlButton friend={friend} />}
+                    <ExtraDayButton friend={friend} />
                     <EditButton friend={friend} />
                     <DeleteButton friend={friend} />
                 </TableCell>

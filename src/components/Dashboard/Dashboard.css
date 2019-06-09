@@ -42,21 +42,21 @@
     padding: 0 100px 10px 100px !important;
 }
 
-.dashboard-message {
-    margin: 25px 0 0 0;
+.dashboardMessage {
+    margin: 25px 0 10px 0;
     font-size: 18px;
-    font-style: italic;
-    font-weight: 500;
 }
 
-.pie-label {
-    margin-bottom: 10px;
-}
-
-.card-header {
+.dueHeader {
     margin: 50px 0 0 0;
 }
 
-.card-date {
+.cardHeader {
     font-weight: 900;
+    font-size: 18px;
+    font-style: normal;
+}
+
+.cardDate {
+    font-weight: 700;
 }
