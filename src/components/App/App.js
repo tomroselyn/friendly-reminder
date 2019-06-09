@@ -21,6 +21,7 @@ import AllFriends from '../AllFriends/AllFriends';
 import AddEditFriend from '../AddEditFriend/AddEditFriend';
 import AccountInfo from '../AccountInfo/AccountInfo';
 import EmailForm from '../EmailForm/EmailForm';
+import SmsForm from '../SmsForm/SmsForm';
 
 import './App.css';
 
@@ -75,6 +76,11 @@ class App extends Component {
               exact
               path="/send-email"
               component={EmailForm}
+            />
+            <ProtectedRoute
+              exact
+              path="/send-sms"
+              component={SmsForm}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

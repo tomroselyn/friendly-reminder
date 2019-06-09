@@ -13,7 +13,7 @@ router.post('/send', rejectUnauthenticated, (req, res) => {
 
     client.messages.create({
         body: req.body.message, // body of sms message
-        to: `+1${req.body.number}`,  // text this number
+        to: `+1${req.body.friend.sms}`,  // text this number
         from: '+16127126565' // from a valid twilio number
     }).then(message => {
         console.log(message.sid);
