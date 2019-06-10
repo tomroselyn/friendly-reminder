@@ -3,6 +3,8 @@
 
 Friendly Reminder is a web application designed to make it easy to keep up with friends on a regular basis.
 
+Available for use here: [https://friendly-reminder-app.herokuapp.com/](https://friendly-reminder-app.herokuapp.com/)
+
 For many of us, there are simply too many people in our lives to keep up with, and too often the ones we care about most slip through the cracks. Moreover, many of my contacts are really only available through specific channels. Certain people I contact only through email, or only through text messaging, or only through a social media network like Facebook or LinkedIn.
 
 I built Friendly Reminder to solve these problems. After creating an account, I am able to set up each contact with multiple contact addresses, including a preferred contact method. I will also set a frequency for each, or how many days should pass before I'm reminded again to get in touch.
