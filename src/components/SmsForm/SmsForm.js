@@ -41,7 +41,7 @@ class SmsForm extends Component {
     setDummyData = (event) => {
         event.preventDefault();
         this.setState({
-            message: 'hello world'
+            message: 'hi, heena!'
         })
     }
 

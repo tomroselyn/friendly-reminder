@@ -37,26 +37,27 @@ class AddEditFriend extends Component {
             this.props.dispatch({ type: 'UPDATE_FRIEND', payload: this.state, id: this.props.redux.editFriend.id });
             swal("friend updated!", "", "success");
             this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
+            this.props.history.push('/all-friends');
         } else {
             //otherwise, add as a new friend
             this.props.dispatch({ type: 'ADD_FRIEND', payload: this.state });
             swal("friend added!", "", "success");
+            this.props.history.push('/dashboard');
         }
-        this.props.history.push('/all-friends');
     } //end handleSubmit
 
     setDummyData = (event) => {
         event.preventDefault();
         this.setState({
-            first_name: 'Sunne',
-            last_name: 'Grady',
-            email: 'grady4396@gmail.com',
-            sms: '5551112345 ',
-            url: 'https://www.facebook.com/sunne.grady',
-            pref: 'url',
-            frequency: '7',
+            first_name: 'Heena',
+            last_name: 'Kouser',
+            email: '',
+            sms: '6125941052',
+            url: '',
+            pref: 'sms',
+            frequency: '2',
             last_type: 'sms',
-            last_date: '2019-05-31'
+            last_date: '2019-06-07'
         })
     }
 
