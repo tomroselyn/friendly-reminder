@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 class LoginPage extends Component {
   state = {
@@ -30,14 +30,6 @@ class LoginPage extends Component {
     });
   }
 
-  setDummyLogin = event => {
-    event.preventDefault();
-    this.setState({
-      username: 'tgroselyn@gmail.com',
-      password: '1234'
-    });
-  }
-
   render() {
     return (
       <div>
@@ -55,7 +47,7 @@ class LoginPage extends Component {
         {/* log in form */}
         <form id="loginForm" onSubmit={this.login}>
           
-          <h2 onClick={this.setDummyLogin}>log in</h2>
+          <h2>log in</h2>
 
           <TextField
             required

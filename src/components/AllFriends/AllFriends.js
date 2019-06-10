@@ -11,12 +11,6 @@ import './AllFriends.css';
 
 class AllFriends extends Component {
 
-    // //clears out editFriend reducer and sends user to add friend form
-    // handleAddClick = (event) => {
-    //     this.props.dispatch({ type: 'CLEAR_EDIT_FRIEND' });
-    //     this.props.history.push('/add-edit-friend');
-    // }
-
     render() {
 
         //setting up table rows by mapping friend reducer data

@@ -39,14 +39,6 @@ class EmailForm extends Component {
             });
     } //end handleSubmit
 
-    setDummyData = (event) => {
-        event.preventDefault();
-        this.setState({
-            subject: 'hello world',
-            message: 'how are you doing today?'
-        })
-    }
-
     render() {
 
         // console.log('current friend:', this.state.friend);
@@ -54,7 +46,7 @@ class EmailForm extends Component {
         return (
             <form id="emailForm" onSubmit={this.handleSubmit}>
                 <div>
-                    <h2 onClick={this.setDummyData}>send an email</h2>
+                    <h2>send an email</h2>
                 </div>
                 <Grid container id="addressInfo" spacing={2}>
                     <Grid item xs={12}>

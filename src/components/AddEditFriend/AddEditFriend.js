@@ -46,21 +46,6 @@ class AddEditFriend extends Component {
         }
     } //end handleSubmit
 
-    setDummyData = (event) => {
-        event.preventDefault();
-        this.setState({
-            first_name: 'Heena',
-            last_name: 'Kouser',
-            email: '',
-            sms: '6125941052',
-            url: '',
-            pref: 'sms',
-            frequency: '2',
-            last_type: 'sms',
-            last_date: '2019-06-07'
-        })
-    }
-
     render() {
 
         //if there's a friend in the editFriend reducer, render button as 'update friend'
@@ -75,7 +60,7 @@ class AddEditFriend extends Component {
         return (
             <div className="formContainer">
                 <form id="addEditFriendForm" onSubmit={this.handleSubmit}>
-                    <h2 onClick={this.setDummyData}>add / edit friend</h2>
+                    <h2>add / edit friend</h2>
                     <Grid container id="nameInputs" spacing={2}>
                         <Grid item xs={12}>
                             <h4>What is your friend's name?</h4>
