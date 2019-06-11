@@ -40,7 +40,7 @@ test('it should return user friend list when logged in', async () => {
 
     const response = await agent
         .post('/api/user/login')
-        .send({ username: 'tgroselyn@gmail.com', password: '1234' });
+        .send({ username: 'testuser', password: '1234' });
     expect(response.statusCode).toBe(200);
 
     const userResponse = await agent.get('/api/friend');
