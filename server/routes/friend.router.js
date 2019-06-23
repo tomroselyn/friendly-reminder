@@ -41,7 +41,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
     dueDate.setMinutes(0)
     dueDate.setSeconds(0)
     dueDate.setMilliseconds(0);
-    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
+    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency));
     // console.log('due date after calculation:', dueDate);
 
     //use the same connection for all queries
@@ -92,7 +92,7 @@ router.put('/:id', rejectUnauthenticated, async (req, res) => {
     dueDate.setMinutes(0)
     dueDate.setSeconds(0)
     dueDate.setMilliseconds(0);
-    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency + 1));
+    dueDate.setDate(dueDate.getDate() + (1 * friend.frequency));
     // console.log('due date after calculation:', dueDate);
 
     //use the same connection for all queries
