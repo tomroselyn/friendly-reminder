@@ -64,7 +64,6 @@ App allows users to
 - [ ] Improve user registration - validate information
 - [ ] Port to mobile-first web app or platform-native app
 - [ ] Use Material-UI theme for consistency and ease of updating
-- [ ] Deploy to Heroku
 
 ## Authors
 
