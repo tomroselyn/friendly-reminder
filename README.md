@@ -28,16 +28,16 @@ These instructions will get you a copy of the project up and running on your loc
 Steps to get the development environment running.
 
 1. Download this project.
-2. Set up a local PostgreSQL database called `prime_app`
-3. Use the data.sql instructions to create a table in your database
-4. Set up a local .env file with the following fields, replacing values with your own:
+2. Set up a local PostgreSQL database called `friendly_reminder`
+3. Use the database.sql instructions to create a table in your database
+4. Set up a local .env file with the following fields, replacing values in parentheses with your own:
     a. SERVER_SESSION_SECRET=(32-character string including symbols)
     b. email_user=(gmail account to send messages from)
-    c. email_pass=(gmail account password)
-    d. sms_accountSid=(twilio account sid)
-    e. sms_authToken=(twilio auth token)
+    c. email_pass=(gmail account password, two-factor authentication won't work here)
+    d. sms_accountSid=(twilio account sid - optional, if using SMS router)
+    e. sms_authToken=(twilio auth token - optional, if using SMS router)
 5. In the terminal, `npm install` in the project folder
-6. In the terminal, `npm run server` and `npm run client`
+6. In the terminal, `npm run server` in one tab and `npm run client` in another
 
 ## Screen Shot
 
